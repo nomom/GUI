@@ -1,4 +1,4 @@
-/*Default Header CSS*/
+/*Default CSS*/
 
 @font-face {
     font-family: 'LeagueSpartan';
@@ -10,12 +10,28 @@
     src: url('../font/LeagueSpartan-Bold.ttf');
 }
 
+body::-webkit-scrollbar {
+    width: 5px; /* Width of the scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color of the track */
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar handle */
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar handle on hover */
+}
+
+/*Header CSS*/
 html, body {
     font-family: 'LeagueSpartan';
     height: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* This prevents scrollbars from appearing */
     color: black;
 }
 
