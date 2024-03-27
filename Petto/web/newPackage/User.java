@@ -17,6 +17,7 @@ public class User {
     private boolean isAdmin;
     public User(String userID,String userName,String pswd,String firstName,String  lastName,String isAdmin){
         this.userID = userID;
+        
     }
     
 }
