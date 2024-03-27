@@ -1,0 +1,21 @@
+/*================================================Home Page 1================================================*/
+div#homepage_1 {
+    display: flex; 
+    margin-left: 130px;
+}
+
+div#homepage_1 h1{
+    font-family: LeagueSpartanBold;
+    font-size: 50px;
+    margin-bottom: 0px;
+}
+
+div#homepage_1 p{
+    margin-top: 0px;
+}
+
+div#homepage_1 img {
+    margin-left: 210px;
+}
+    
+
