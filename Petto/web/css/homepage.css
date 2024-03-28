@@ -1,7 +1,7 @@
 /*================================================Home Page 1================================================*/
 div#homepage_1 {
     display: flex; 
-    margin-left: 130px;
+    margin-left: 70px;
 }
 
 div#homepage_1 h1{
@@ -15,7 +15,67 @@ div#homepage_1 p{
 }
 
 div#homepage_1 img {
-    margin-left: 210px;
+    margin-left: 360px;
 }
     
+/*================================================Home Page 2================================================*/
+div.hp2 {
+    display: flex; 
+}
 
+hr#leftline {
+    margin-right: 0px;
+    margin-left: 100px;
+    border-width: 1px; 
+    border-style: solid; 
+    border-color: black;
+}
+
+hr#rightline {
+    border-width: 1px; 
+    border-style: solid; 
+    border-color: black;
+}
+
+div#lower_banner {
+    margin-left: 550px;
+}
+
+div#homepage_2 h3{
+    margin: 0px 180px;
+}
+
+/*================================================Home Page 2 Items===============================================*/
+div.hp2_items {
+    font-family: LeagueSpartanBold;
+}
+
+div.hp2_items img{
+    margin-bottom: 0px;
+}
+
+div.hp2_items p{
+    margin-top: 0px;
+}
+
+div#items_1 p{
+    margin-left: 70px;
+}
+
+div#items_2 p{
+    margin-left: 90px;
+}
+
+div#items_3 p{
+    margin-left: 80px;
+}
+
+div#middle_hp2 {
+    margin: 0px 150px 0 150px;
+}
+
+hr#ending_hr {
+    border-width: 0.5px; 
+    border-style: solid; 
+    border-color: black;
+}

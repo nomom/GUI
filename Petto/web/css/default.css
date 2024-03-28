@@ -66,3 +66,31 @@ nav ul li a {
 p#header_banner_p {
     margin: 0px;
 }
+
+/*Footer CSS*/
+
+footer {
+    display: flex;
+}
+
+footer div {
+    margin-left: 75px;
+    margin-bottom: 50px;
+}
+
+footer div.footer_sections p{
+    font-family: LeagueSpartanBold;
+    margin-bottom: 0px;
+}
+
+footer div#footer_image a img{
+    margin-top: 40px;
+    margin-left: 380px;
+}
+
+/*Address CSS*/
+address {
+    word-spacing: 10px;
+    margin-left: 10px;
+}
+
