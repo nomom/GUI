@@ -1,0 +1,64 @@
+div.hp2 {
+    display: flex; 
+}
+
+hr#leftline {
+    margin-right: 0px;
+    margin-left: 70px;
+    border-width: 1px; 
+    border-style: solid; 
+    border-color: black;
+}
+
+hr#rightline {
+    margin-right: 350px;
+    border-width: 1px; 
+    border-style: solid; 
+    border-color: black;
+}
+
+div#middleline h3{
+    margin: 0px 180px;
+}
+
+div.txthead{
+    font-family: LeagueSpartanBold;
+}
+
+div.txtbody{
+    font-family: Inconsolata;
+}
+
+div#lefttxt{
+    float: left;
+    margin-left: 75px;
+}
+
+div#middletxt{
+    margin-left: 250px;
+    display: inline-block;
+}
+
+div#middle{
+    display: inline-block;
+    margin-top: 30px;
+}
+
+div#righttxt{
+    float: right;
+    margin-left: 250px;
+}
+
+div#redtxt{
+    color: red;
+}
+
+div.btmbox{
+    font-family: LeagueSpartanBold;
+    margin-top: 30px;
+    margin-left: 75px;
+    width: 70%;
+}
+div#btmtxt p{
+  
+}
