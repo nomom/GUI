@@ -1,7 +1,7 @@
 /*================================================Home Page 1================================================*/
 div#homepage_1 {
     display: flex; 
-    margin-left: 70px;
+    margin-left: 300px;
 }
 
 div#homepage_1 h1{
@@ -25,7 +25,7 @@ div.hp2 {
 
 hr#leftline {
     margin-right: 0px;
-    margin-left: 100px;
+    margin-left: 120px;
     border-width: 1px; 
     border-style: solid; 
     border-color: black;
@@ -38,11 +38,11 @@ hr#rightline {
 }
 
 div#lower_banner {
-    margin-left: 550px;
+    margin: 50px 0px 50px 740px;
 }
 
 div#homepage_2 h3{
-    margin: 0px 180px;
+    margin: 0px 270px;
 }
 
 /*================================================Home Page 2 Items===============================================*/
@@ -52,22 +52,24 @@ div.hp2_items {
 
 div.hp2_items img{
     margin-bottom: 0px;
+    margin-left: 85px;
 }
+
 
 div.hp2_items p{
     margin-top: 0px;
 }
 
 div#items_1 p{
-    margin-left: 70px;
+    margin-left: 160px;
 }
 
 div#items_2 p{
-    margin-left: 90px;
+    margin-left: 180px;
 }
 
 div#items_3 p{
-    margin-left: 80px;
+    margin-left: 170px;
 }
 
 div#middle_hp2 {

@@ -35,7 +35,6 @@ html, body {
     color: black;
 }
 
-
 header {
     margin: 0;
     padding: 0;
@@ -45,6 +44,7 @@ nav ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    margin-left: 180px;
     display: flex; 
     align-items: center; 
 }
@@ -58,7 +58,7 @@ nav ul li:last-child {
     margin-right: 0;
 }
 
-nav ul li a {
+a {
     text-decoration: none; 
     color: black; 
 }
@@ -74,8 +74,7 @@ footer {
 }
 
 footer div {
-    margin-left: 75px;
-    margin-bottom: 50px;
+    margin: 50px 0px 50px 150px;
 }
 
 footer div.footer_sections p{
@@ -90,7 +89,6 @@ footer div#footer_image a img{
 
 /*Address CSS*/
 address {
-    word-spacing: 10px;
-    margin-left: 10px;
+    word-spacing: 27px;
 }
 
