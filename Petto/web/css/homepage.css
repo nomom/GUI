@@ -1,7 +1,7 @@
 /*================================================Home Page 1================================================*/
 div#homepage_1 {
     display: flex; 
-    margin-left: 300px;
+    justify-content: center;
 }
 
 div#homepage_1 h1{
@@ -14,70 +14,26 @@ div#homepage_1 p{
     margin-top: 0px;
 }
 
-div#homepage_1 img {
-    margin-left: 360px;
-}
-    
 /*================================================Home Page 2================================================*/
-div.hp2 {
-    display: flex; 
+div#homepage_2 {
+    margin-top: 5%;
 }
 
-hr#leftline {
-    margin-right: 0px;
-    margin-left: 120px;
-    border-width: 1px; 
-    border-style: solid; 
-    border-color: black;
-}
-
-hr#rightline {
-    border-width: 1px; 
-    border-style: solid; 
-    border-color: black;
-}
-
-div#lower_banner {
-    margin: 50px 0px 50px 740px;
-}
-
-div#homepage_2 h3{
-    margin: 0px 270px;
-}
-
-/*================================================Home Page 2 Items===============================================*/
-div.hp2_items {
-    font-family: LeagueSpartanBold;
-}
-
-div.hp2_items img{
-    margin-bottom: 0px;
-    margin-left: 85px;
-}
-
-
-div.hp2_items p{
-    margin-top: 0px;
-}
-
-div#items_1 p{
-    margin-left: 160px;
-}
-
-div#items_2 p{
-    margin-left: 180px;
-}
-
-div#items_3 p{
-    margin-left: 170px;
+div#upper_banner {
+    text-align: center;
 }
 
 div#middle_hp2 {
-    margin: 0px 150px 0 150px;
+    display: flex;
+    justify-content: center;
 }
 
-hr#ending_hr {
-    border-width: 0.5px; 
-    border-style: solid; 
-    border-color: black;
+div.hp2_items p {
+    font-family: Inconsolata;
+}
+
+div#lower_banner {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
 }

@@ -1,33 +1,15 @@
-@font-face {
-    font-family: Inconsolata;
-    src: url(../font/Inconsolata-Regular.ttf);
-}
-
 body {
     font-family: Inconsolate;
 }
 
-div.hp2 {
-    display: flex; 
+div#middle {
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
-hr#leftline {
-    margin-right: 0px;
-    margin-left: 320px;
-    border-width: 1px; 
-    border-style: solid; 
-    border-color: black;
-}
-
-hr#rightline {
-    margin-right: 350px;
-    border-width: 1px; 
-    border-style: solid; 
-    border-color: black;
-}
-
-div#middleline h3{
-    margin: 0px 180px;
+div#middle div {
+    margin: 2%;
 }
 
 div.txthead{
@@ -38,33 +20,17 @@ div.txtbody{
     font-family: Inconsolata;
 }
 
-div#lefttxt{
-    float: left;
-    margin-left: 250px;
-}
-
-div#middletxt{
-    margin-left: 250px;
-    display: inline-block;
-}
-
-div#middle{
-    display: inline-block;
-    margin-top: 30px;
-}
-
-div#righttxt{
-    float: right;
-    margin-left: 250px;
-}
-
 div#redtxt{
     color: red;
 }
 
-div.btmbox{
+div#btmbox{
+    display: flex;
+    justify-content: center;
     font-family: LeagueSpartanBold;
-    margin-top: 30px;
-    margin-left: 250px;
+}
+
+div#btmbox div{
     width: 70%;
 }
+
