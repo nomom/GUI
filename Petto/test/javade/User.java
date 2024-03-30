@@ -13,6 +13,7 @@ public class User {
     private String userName;
     private String pswd;
     private boolean isAdmin;
+    private Cart cart;
     
     public User(String userID,String userName,String pswd,boolean isAdmin){
         this.userID = userID;
