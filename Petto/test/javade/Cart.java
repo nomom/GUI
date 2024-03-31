@@ -10,6 +10,7 @@ package javade;
  */
 public class Cart {
     private String cartID;
-    private String UserID;
     private String productID;
+    
+    
 }
