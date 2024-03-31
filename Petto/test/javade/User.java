@@ -14,12 +14,15 @@ public class User {
     private String pswd;
     private boolean isAdmin;
     private Cart cart;
+    private static int userCount = 000;
     
-    public User(String userID,String userName,String pswd,boolean isAdmin){
-        this.userID = userID;
+    public User(String userName,String pswd,boolean isAdmin, String cartID){
+        userCount ++;
         this.userName = userName;
         this.pswd = pswd;
         this.isAdmin = isAdmin;
+        this.userID = String.format("U%03d", userCount);
+        
     }
 
     public String getUserID() {
@@ -46,7 +49,7 @@ public class User {
         this.pswd = pswd;
     }
 
-    public boolean isIsAdmin() {
+    public boolean getIsAdmin() {
         return isAdmin;
     }
 
