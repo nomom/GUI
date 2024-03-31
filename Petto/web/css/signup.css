@@ -1,0 +1,42 @@
+div#signup_body_main {
+    display: flex;
+}
+
+div#signup_body_1 {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2px;
+    margin-left: 70px;
+}
+
+div#signup_body_1 form > *{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+a#signup_hover:hover{
+    text-decoration: underline;   
+}
+
+/*Form Style*/
+div#signup_body_1 form input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+
+div#signup_body_1 form input:hover {
+    border-color: #999;
+  }
+  
+div#signup_body_1 form input:focus {
+    outline: none;
+    border-color: blue;
+  }
+
+/*signup Style*/
+div#signup_pic {
+    display: flex;
+    justify-content: right;
+}
