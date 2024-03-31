@@ -1,0 +1,18 @@
+div.txtbody{
+    font-family: Inconsolata;
+}
+
+div.txthead{
+    font-family: LeagueSpartanBold;
+}
+
+div#head{ /*shipping text at the top*/
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+div#txt{ /*text below*/
+    margin: 5%;
+}
+

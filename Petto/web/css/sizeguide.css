@@ -1,0 +1,48 @@
+div.txthead{
+    font-family: LeagueSpartanBold;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+div.justtext{
+    font-family: LeagueSpartanBold;
+}
+
+div.txtbody{
+    font-family: Inconsolata;
+}
+
+/* 8==D */ /*=================================== IMAGE/TEXT STYLING ===================================*/ /* 8==D */
+div#head{
+    margin-top: 30px;
+    justify-content: center;
+}
+
+div#bodyhead{
+    margin: auto;
+    width: 75%;
+}
+
+div#bodytxt{
+    margin: auto;
+    width: 75%;
+}
+
+div#collar{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+div#collar img{
+    max-width: 60%;
+    max-height: 60%;
+    object-fit: contain;
+}
+
+div#collar p{
+    margin: auto;
+}
+/* 8==D */ /*=================================== IMAGE/TEXT STYLING ===================================*/ /* 8==D */
+
+

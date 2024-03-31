@@ -1,0 +1,25 @@
+div.txtbody{
+    font-family: Inconsolata;
+}
+
+div.txthead{
+    font-family: LeagueSpartanBold;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+div#txt{ /*behind the pet text*/
+    margin: 2%;
+    border: 1px solid;
+}
+
+div#thomasshelby img{ /*thomas shelby image styling*/
+    display:block;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+    border: 5px solid gray;
+    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.4);
+}
