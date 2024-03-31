@@ -1,6 +1,17 @@
+<%-- 
+    Document   : signup
+    Created on : Mar 31, 2024, 8:40:09 PM
+    Author     : Acer
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page  import="da.userDA"%>
+<%@ page  import="javade.User"%>
 <!DOCTYPE html>
+
 <html lang="en">
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Petto - Signup</title>
@@ -16,12 +27,18 @@
         <div id="signup_body_main">
             <div id="signup_body_1">
                 <h1>signup</h1>
-                <form method="post">
+                <form method="post" action="">
                     <label>username</label><br/>
                     <input name="username" type="text"><br/>
                     <label>password</label><br/>
                     <input name="password" type="text"><br/>
                     <input type="submit" value="Register">
+                    <%
+                    User user = new User(request.getParameter("username"),request.getParameter("password"),false);
+                    userDA userda= new userDA();
+                    userda.signupUser(user);
+                    
+                    %>
                 </form>
             </div>
         </div>
@@ -32,3 +49,4 @@
     </body>
 
 </html>
+
