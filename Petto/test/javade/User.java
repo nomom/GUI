@@ -12,8 +12,9 @@ public class User {
     private String userID;
     private String userName;
     private String pswd;
+    private String cartID;
     private boolean isAdmin;
-    private Cart cart;
+   
     private static int userCount = 000;
     
     public User(String userName,String pswd,boolean isAdmin, String cartID){
@@ -22,6 +23,7 @@ public class User {
         this.pswd = pswd;
         this.isAdmin = isAdmin;
         this.userID = String.format("U%03d", userCount);
+        this.cartID = String.format("C%30d", userCount);
         
     }
 
