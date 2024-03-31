@@ -15,9 +15,9 @@ public class User {
     private String cartID;
     private boolean isAdmin;
    
-    private static int userCount = 000;
+    private static int userCount = 0;
     
-    public User(String userName,String pswd,boolean isAdmin, String cartID){
+    public User(String userName,String pswd,boolean isAdmin){
         userCount ++;
         this.userName = userName;
         this.pswd = pswd;
