@@ -30,9 +30,27 @@ public class userDA {
             JOptionPane.showMessageDialog(null, ex.getMessage(),"Error connecting SQL", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    public void addUser(User user){
+    public void getUser(User user){
         try{
+            stmt = conn.prepareStatement(selectQ);
+            stmt.setString(1, user.getUserID());
+            stmt.setString(2, user.getUserName());
+            stmt.setString(3, user.getPswd());
+            stmt.setBoolean(4,user.getIsAdmin());
+            
+            stmt.executeQuery();
+        }catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, ex.getMessage(),"Error on adding user", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void signupUser(User user){
+        try{
+//            if(){
+//                
+//            }else{
+//                
+//            }
             stmt = conn.prepareStatement(insertQ);
             stmt.setString(1, user.getUserID());
             stmt.setString(2, user.getUserName());
@@ -50,7 +68,7 @@ public class userDA {
     public static void main(String[] args) {
         userDA usertry = new userDA();
         User user1 = new User("Clement","12345",false,"randomcartID");
-        usertry.addUser(user1);
+        usertry.signupUser(user1);
         
     }
     
