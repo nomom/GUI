@@ -15,20 +15,45 @@ public class validationSU extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
+        Integer validateExist = 0;
 
-        HttpSession session = request.getSession();
+        String name = request.getParameter("username");
+        String password = request.getParameter("password");
 
-        userDA userda = new userDA();
-        User user = (User) session.getAttribute("user");
-        Boolean validationFactor = userda.getUserName(user);
-
-        if (validationFactor) {
-            out.print("Username existed!");
-            RequestDispatcher rd = request.getRequestDispatcher("/signup.jsp");
-            rd.forward(request, response);
+        if (name.length() == 0) {
+            out.print("Username Needed!");
+        } else if (password.length() == 0) {
+            out.print("Password Needed!");
         } else {
-            RequestDispatcher rd = request.getRequestDispatcher("/signup_confirmation.jsp");
-            rd.include(request, response);
+            //Create user objects
+            User user = new User(name, password, false);
+            userDA userda = new userDA();
+
+            //True or false here <3
+            boolean determination = userda.getUserName(user);
+
+            // Get a HttpSession or create one if it does not exist
+            HttpSession httpSession = request.getSession();
+
+            // Store Programme object to the session
+            httpSession.setAttribute("user", user);
+
+            //Validation to tukar to revert back or to confirmation page
+            if (determination) {   
+                validateExist++;
+                httpSession.setAttribute("validate", validateExist);
+                RequestDispatcher rd = request.getRequestDispatcher("/signup.jsp");
+                rd.forward(request, response);
+            } else {
+                validateExist = 0;
+                httpSession.setAttribute("validate", validateExist);
+                RequestDispatcher rd = request.getRequestDispatcher("/signup_confirmation.jsp");
+                rd.forward(request, response);
+            }
+
+            out.close();
         }
+
     }
+
 }

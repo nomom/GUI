@@ -15,6 +15,10 @@ div#signup_body_1 form > *{
     row-gap: 5px;
 }
 
+div#signup_body_1 h2{
+    color: red;
+}
+
 a#signup_hover:hover{
     text-decoration: underline;   
 }

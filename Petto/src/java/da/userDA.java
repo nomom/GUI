@@ -10,7 +10,6 @@ package da;
  */
 import javade.User;
 import java.sql.*;
-import javax.swing.*;
 
 public class userDA {
 
@@ -30,16 +29,21 @@ public class userDA {
         }
     }
 
-    public Boolean getUserName(User user) {
-        String selectQuery = "SELECT FROM" + tableName + "WHERE USERNAME = ?";
+    public boolean getUserName(User user) {
+        String selectQuery = "SELECT * FROM " + tableName + " WHERE USERNAME = ?";
         try {
-            stmt = conn.prepareStatement(selectQuery);
+            PreparedStatement stmt = conn.prepareStatement(selectQuery);
             stmt.setString(1, user.getUserName());
-            rs = stmt.executeQuery();
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                return true;
+            }
 
         } catch (SQLException ex) {
-            ex.printStackTrace(); // Better error handling        }
+            ex.printStackTrace(); // Better error handling
         }
+        return false;
     }
 
     public void signupUser(User user) {

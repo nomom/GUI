@@ -28,10 +28,12 @@
             <div id="signup_body_1">
                 <h1>signup</h1>
                 <%
-                    String name = request.getParameter("username");
-                    String password = request.getParameter("password");
-                    User user = new User(name, password, false);
-                    session.setAttribute("user", user);
+                    Integer validateExist = (Integer) session.getAttribute("validate");
+                    if (validateExist != null && validateExist > 0) {
+                %>
+                <h2>Username already exists!</h2>
+                <%
+                    }
                 %>
                 <form method="post" action="validationSU">
                     <label>username</label><br/>
