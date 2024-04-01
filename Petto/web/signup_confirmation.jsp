@@ -27,11 +27,14 @@
         <div id="signup_body_main">
             <div id="signup_body_1">
                 <h1>signup</h1>
-                <%
-                    User user = new User(request.getParameter("username"), request.getParameter("password"), false);
-                    userDA userda = new userDA();
-                %>
-                <p><%= user.getUserName()%></p>
+                <form method="post" action="signup_confirmation.jsp">
+                    <label>username</label><br/>
+                    <input name="username" type="text"><br/>
+                    <label>password</label><br/>
+                    <input name="password" type="text"><br/>
+                    <input type="submit" value="Register">
+                </form>
+                
             </div>
         </div>
         <div id="signup_pic">
