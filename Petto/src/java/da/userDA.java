@@ -20,52 +20,41 @@ public class userDA {
     private static String tableName = "USERS";
     private Connection conn;
     private PreparedStatement stmt;
-    private String selectQ = "Select * from " + tableName;
-    private String insertQ = "INSERT INTO " + tableName + " VALUES (?,?,?,?)";
     private ResultSet rs;
 
     public userDA() {
         try {
             conn = DriverManager.getConnection(host, user, password);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error connecting SQL", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace(); // Better error handling         }
         }
     }
 
-    public ResultSet getUserName(User user) {
+    public Boolean getUserName(User user) {
         String selectQuery = "SELECT FROM" + tableName + "WHERE USERNAME = ?";
         try {
             stmt = conn.prepareStatement(selectQuery);
             stmt.setString(1, user.getUserName());
-            ResultSet rs = stmt.executeQuery();
+            rs = stmt.executeQuery();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error on adding user", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace(); // Better error handling        }
         }
-        return rs;
     }
 
     public void signupUser(User user) {
-//        String selectQuery = "SELECT FROM" + tableName + "WHERE USERNAME = ?";
+
         try {
-//            stmt = conn.prepareStatement(selectQuery);
-//            stmt.setString(1, user.getUserName());
-//            ResultSet rs = stmt.executeQuery();
+            String insertQuery = "INSERT INTO " + tableName + " VALUES (?, ?, ?, ?)";
+            stmt = conn.prepareStatement(insertQuery);
+            stmt.setString(1, user.getUserID());
+            stmt.setString(2, user.getUserName());
+            stmt.setString(3, user.getPswd());
+            stmt.setBoolean(4, user.getIsAdmin());
+            stmt.executeUpdate();
 
-              ResultSet rs = getUserName(user);
-
-            if (rs.next()) {
-                JOptionPane.showMessageDialog(null, "This user alreaday exist.", "DUPLICATE RECORD", JOptionPane.ERROR_MESSAGE);
-            } else {
-                stmt = conn.prepareStatement(insertQ);
-                stmt.setString(1, user.getUserID());
-                stmt.setString(2, user.getUserName());
-                stmt.setString(3, user.getPswd());
-                stmt.setBoolean(4, false);
-                stmt.executeUpdate();
-            }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage(), "Error on adding user", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace(); // Better error handling
         }
     }
 
@@ -79,5 +68,4 @@ public class userDA {
 //        usertry.signupUser(user1);
 //
 //    }
-
 }
