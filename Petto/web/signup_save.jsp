@@ -30,6 +30,8 @@
                     userDA userda = new userDA();
                     User user = (User)session.getAttribute("user");
                     userda.signupUser(user);
+                    //kemek I added this so when the user kukubird yang, click back to the signup_confirmation page and confirm again,
+                    //give error so no duplication record
                     session.removeAttribute("user");
                 %>
                 <h1>signup completed </h1> <br/><br/><br/>
