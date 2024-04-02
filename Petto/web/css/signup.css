@@ -28,6 +28,7 @@ div#signup_body_1 form input {
     padding: 5px;
     border: 1px solid #ccc;
     background-color: #f9f9f9;
+    font-family: LeagueSpartan;
 }
 
 div#signup_body_1 form input:hover {
@@ -44,3 +45,6 @@ div#signup_pic {
     display: flex;
     justify-content: right;
 }
+
+
+/*signup_save.jsp css*/

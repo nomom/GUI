@@ -21,9 +21,11 @@ public class validationSU extends HttpServlet {
         String password = request.getParameter("password");
 
         if (name.length() == 0) {
-            out.print("Username Needed!");
+            out.print("<link rel=\"stylesheet\" href=\"css/default.css\">"
+                    + "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Username Needed!</h2>");
         } else if (password.length() == 0) {
-            out.print("Password Needed!");
+            out.print("<link rel=\"stylesheet\" href=\"css/default.css\">"
+                    + "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Password Needed!</h2>");
         } else {
             //Create user objects
             User user = new User(name, password, false);

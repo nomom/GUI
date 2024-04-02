@@ -33,10 +33,8 @@
                     String password = user.getPswd();
                 %>
                 <form method="post" action="signup_save.jsp">
-                    <label>username</label><br/>
-                    <input type="text" value="<%= name%>" name="name"/></p>
-                    <label>password</label><br/>
-                    <input type="text" value="<%= password%>" name="password"><br/>
+                    <label>username: <%= name%></label><br/>
+                    <label>password: <%= password%></label><br/>
                     <input type="submit" value="Confirm">
                 </form>
             </div>

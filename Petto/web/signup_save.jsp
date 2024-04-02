@@ -30,8 +30,12 @@
                     userDA userda = new userDA();
                     User user = (User)session.getAttribute("user");
                     userda.signupUser(user);
+                    session.removeAttribute("user");
                 %>
-                <h1>signup completed <br/> redirecting to homepage...</h1>
+                <h1>signup completed </h1> <br/><br/><br/>
+                    <form action="homepage.html">
+                    <input id="signup_save_button" type="submit" value="to Petto!"/>
+                </form>
             </div>
         </div>
         <div id="signup_pic">
