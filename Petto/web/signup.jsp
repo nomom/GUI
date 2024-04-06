@@ -42,6 +42,7 @@
                     <input name="password" type="text"><br/>
                     <input type="submit" value="Register">
                 </form>
+                <h3>login <a style="color: blue;" id="signup_hover" href="login.html">here</a></h2>
             </div>
         </div>
         <div id="signup_pic">

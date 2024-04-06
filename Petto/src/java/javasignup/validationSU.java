@@ -26,6 +26,10 @@ public class validationSU extends HttpServlet {
         } else if (password.length() == 0) {
             out.print("<link rel=\"stylesheet\" href=\"css/default.css\">"
                     + "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Password Needed!</h2>");
+        } else if (password.length() == 0 && name.length() == 0) {
+            out.print("<link rel=\"stylesheet\" href=\"css/default.css\">"
+                    + "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Password Needed!</h2><br/>"
+                    + "<br/><h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Password Needed!</h2>");
         } else {
             //Create user objects
             User user = new User(name, password, false);
@@ -41,7 +45,7 @@ public class validationSU extends HttpServlet {
             httpSession.setAttribute("user", user);
 
             //Validation to tukar to revert back or to confirmation page
-            if (determination) {   
+            if (determination) {
                 validateExist++;
                 httpSession.setAttribute("validate", validateExist);
                 RequestDispatcher rd = request.getRequestDispatcher("/signup.jsp");

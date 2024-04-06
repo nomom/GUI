@@ -20,7 +20,7 @@ div#signup_body_1 h2{
 }
 
 a#signup_hover:hover{
-    text-decoration: underline;   
+    text-decoration: underline;
 }
 
 /*Form Style*/
@@ -33,12 +33,20 @@ div#signup_body_1 form input {
 
 div#signup_body_1 form input:hover {
     border-color: #999;
-  }
-  
+}
+
 div#signup_body_1 form input:focus {
     outline: none;
     border-color: blue;
-  }
+}
+
+div#signup_body_1 a {
+    color: blue;
+}
+
+div#signup_body_1 a:hover {
+    text-decoration: underline;
+}
 
 /*signup Style*/
 div#signup_pic {
