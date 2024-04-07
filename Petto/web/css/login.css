@@ -9,6 +9,11 @@ div#login_body_1 {
     margin-left: 70px;
 }
 
+/**Servlet validation check**/
+div#login_body_1 h2{
+    color: red;
+}
+
 div#login_body_1 form > *{
     display: flex;
     flex-direction: column;

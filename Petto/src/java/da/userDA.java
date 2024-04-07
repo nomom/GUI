@@ -29,6 +29,7 @@ public class userDA {
         }
     }
 
+    //Get the username to check wheter it's valid or not.
     public boolean getUserName(User user) {
         String selectQuery = "SELECT * FROM " + tableName + " WHERE USERNAME = ?";
         try {
@@ -46,6 +47,29 @@ public class userDA {
         return false;
     }
 
+    //Get the user password to check wheter it's valid or not.
+    public boolean validatePassword(User user) {
+        String selectQuery = "SELECT * FROM " + tableName + " WHERE USERNAME = ?";
+        try {
+            PreparedStatement stmt = conn.prepareStatement(selectQuery);
+            stmt.setString(1, user.getUserName());
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                //Compare the object's details with database'.
+                if (user.getUserName().equals(rs.getString("USERNAME")) && user.getPswd().equals(rs.getString("PASSWORD"))) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace(); // Better error handling
+        }
+        return false;
+    }
+    
+    //Insert the user details to the database
     public void signupUser(User user) {
 
         try {
@@ -61,9 +85,6 @@ public class userDA {
         }
     }
 
-    public void loginUser(String name, String password) {
-
-    }
 
 //    public static void main(String[] args) {
 //        userDA usertry = new userDA();

@@ -1,4 +1,4 @@
-package javasignup;
+package java_validation;
 
 import da.userDA;
 import javade.User;
@@ -48,7 +48,7 @@ public class validationSU extends HttpServlet {
             if (determination) {
                 validateExist++;
                 httpSession.setAttribute("validate", validateExist);
-                RequestDispatcher rd = request.getRequestDispatcher("/signup.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
                 rd.forward(request, response);
             } else {
                 validateExist = 0;
