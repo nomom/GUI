@@ -9,30 +9,16 @@ package javade;
  * @author Acer
  */
 public class User {
-    private String userID;
     private String userName;
     private String pswd;
     private String cartID;
     private boolean isAdmin;
    
-    private static int userCount = 0;
     
     public User(String userName,String pswd,boolean isAdmin){
-        userCount ++;
         this.userName = userName;
         this.pswd = pswd;
         this.isAdmin = isAdmin;
-        this.userID = String.format("U%03d", userCount);
-        this.cartID = String.format("C%30d", userCount);
-        
-    }
-
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
     }
 
     public String getUserName() {

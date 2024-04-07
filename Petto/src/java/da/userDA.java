@@ -49,12 +49,11 @@ public class userDA {
     public void signupUser(User user) {
 
         try {
-            String insertQuery = "INSERT INTO " + tableName + " VALUES (?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO " + tableName + " VALUES (?, ?, ?)";
             stmt = conn.prepareStatement(insertQuery);
-            stmt.setString(1, user.getUserID());
-            stmt.setString(2, user.getUserName());
-            stmt.setString(3, user.getPswd());
-            stmt.setBoolean(4, user.getIsAdmin());
+            stmt.setString(1, user.getUserName());
+            stmt.setString(2, user.getPswd());
+            stmt.setBoolean(3, user.getIsAdmin());
             stmt.executeUpdate();
 
         } catch (SQLException ex) {

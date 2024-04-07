@@ -26,17 +26,16 @@
         </div>
         <div id="signup_body_main">
             <div id="signup_body_1">
+                <h1>signup confirmation</h1>
                 <%
-                    userDA userda = new userDA();
-                    User user = (User)session.getAttribute("user");
-                    userda.signupUser(user);
-                    //kemek I added this so when the user kukubird yang, click back to the signup_confirmation page and confirm again,
-                    //give error so no duplication record
-                    session.removeAttribute("user");
+                    User user = (User) session.getAttribute("user");
+                    String name = user.getUserName();
+                    String password = user.getPswd();
                 %>
-                <h1>signup completed </h1> <br/><br/><br/>
-                    <form action="homepage.html">
-                    <input id="signup_save_button" type="submit" value="to Petto!"/>
+                <form method="post" action="signup/signup_save.jsp">
+                    <label>username: <%= name%></label><br/>
+                    <label>password: <%= password%></label><br/>
+                    <input type="submit" value="Confirm">
                 </form>
             </div>
         </div>

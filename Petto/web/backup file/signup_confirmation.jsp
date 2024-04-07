@@ -2,7 +2,7 @@
     Document   : signup
     Created on : Mar 31, 2024, 8:40:09 PM
     Author     : Acer
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page  import="da.userDA"%>
@@ -47,3 +47,4 @@
 
 </html>
 
+--%>

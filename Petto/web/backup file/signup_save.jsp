@@ -2,7 +2,7 @@
     Document   : signup
     Created on : Mar 31, 2024, 8:40:09 PM
     Author     : Acer
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page  import="da.userDA"%>
@@ -26,23 +26,18 @@
         </div>
         <div id="signup_body_main">
             <div id="signup_body_1">
-                <h1>signup</h1>
                 <%
-                    Integer validateExist = (Integer) session.getAttribute("validate");
-                    if (validateExist != null && validateExist > 0) {
+                    userDA userda = new userDA();
+                    User user = (User)session.getAttribute("user");
+                    userda.signupUser(user);
+                    //kemek I added this so when the user kukubird yang, click back to the signup_confirmation page and confirm again,
+                    //give error so no duplication record
+                    session.removeAttribute("user");
                 %>
-                <h2>Username already exists!</h2>
-                <%
-                    }
-                %>
-                <form method="post" action="validationSU">
-                    <label>username</label><br/>
-                    <input name="username" type="text"><br/>
-                    <label>password</label><br/>
-                    <input name="password" type="text"><br/>
-                    <input type="submit" value="Register">
+                <h1>signup completed </h1> <br/><br/><br/>
+                    <form action="homepage.html">
+                    <input id="signup_save_button" type="submit" value="to Petto!"/>
                 </form>
-                <h3>login <a style="color: blue;" id="signup_hover" href="login/login.jsp">here</a></h2>
             </div>
         </div>
         <div id="signup_pic">
@@ -53,3 +48,4 @@
 
 </html>
 
+--%>
