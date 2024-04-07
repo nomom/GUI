@@ -1,7 +1,7 @@
-package java_validation;
+package controller;
 
-import da.userDA;
-import javade.User;
+import model.User;
+import model.userDA;
 import java.io.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;

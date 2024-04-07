@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page  import="da.userDA"%>
-<%@ page  import="javade.User"%>
+<%@ page  import="model.userDA"%>
+<%@ page  import="model.User"%>
 <%@ page  import="javax.servlet.http.HttpSession"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> //EL2 from lecture
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 
 
 <html lang="en">
@@ -49,7 +49,7 @@
                     <input name="password" type="text"><br/>
                     <input type="submit" value="Login">
                 </form>
-                <h3>register <a style="color: blue;" id="signup_hover" href="../index.jsp">here</a></h2>
+                <h3>register <a style="color: blue;" id="signup_hover" href="<c:url value='/index.jsp'/>" alt="Cute Cat">here</a></h2>
             </div>
         </div>
         <div id="login_pic">

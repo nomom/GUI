@@ -1,9 +1,9 @@
-package java_validation;
+package controller;
 
-import da.userDA;
+import model.User;
+import model.userDA;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javade.User;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -44,7 +44,6 @@ public class validationLG extends HttpServlet {
             //Check whether the username is in the database or not.
             boolean determination = userda.getUserName(user);
 
-            // Get a HttpSession or create one if it does not exist
             HttpSession httpSession = request.getSession();
 
             // Store Programme object to the session
@@ -54,19 +53,14 @@ public class validationLG extends HttpServlet {
             if (determination) {
                 // Validate the password
                 if (userda.validatePassword(user)) {
-                    // Password is correct, set user details in session
                     httpSession.setAttribute("userDetails", user);
                     response.sendRedirect("homepage.html");
                 } else {
-                    // Incorrect password, set passwordInvalid attribute
                     request.setAttribute("passwordInvalid", true);
-                    // Forward to login page to display error message
                     request.getRequestDispatcher("login/login.jsp").forward(request, response);
                 }
-            } else {
-                // Invalid username, set usernameInvalid attribute
+            } else {      
                 request.setAttribute("usernameInvalid", true);
-                // Forward to login page to display error message
                 request.getRequestDispatcher("login/login.jsp").forward(request, response);
             }
             out.close();
