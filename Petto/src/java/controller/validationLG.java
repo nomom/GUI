@@ -57,11 +57,11 @@ public class validationLG extends HttpServlet {
                     response.sendRedirect("homepage.html");
                 } else {
                     request.setAttribute("passwordInvalid", true);
-                    request.getRequestDispatcher("login/login.jsp").forward(request, response);
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
                 }
             } else {      
                 request.setAttribute("usernameInvalid", true);
-                request.getRequestDispatcher("login/login.jsp").forward(request, response);
+                request.getRequestDispatcher("login.jsp").forward(request, response);
             }
             out.close();
         }

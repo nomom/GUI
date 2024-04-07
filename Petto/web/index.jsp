@@ -42,7 +42,7 @@
                     <input name="password" type="text"><br/>
                     <input type="submit" value="Register">
                 </form>
-                <h3>login <a style="color: blue;" id="signup_hover" href="login/login.jsp">here</a></h2>
+                <h3>login <a style="color: blue;" id="signup_hover" href="login.jsp">here</a></h2>
             </div>
         </div>
         <div id="signup_pic">
