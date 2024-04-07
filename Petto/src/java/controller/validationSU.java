@@ -1,7 +1,7 @@
-package javasignup;
+package controller;
 
-import da.userDA;
-import javade.User;
+import model.User;
+import model.userDA;
 import java.io.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -48,7 +48,7 @@ public class validationSU extends HttpServlet {
             if (determination) {
                 validateExist++;
                 httpSession.setAttribute("validate", validateExist);
-                RequestDispatcher rd = request.getRequestDispatcher("/signup.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
                 rd.forward(request, response);
             } else {
                 validateExist = 0;

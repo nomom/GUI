@@ -2,12 +2,11 @@
     Document   : signup
     Created on : Mar 31, 2024, 8:40:09 PM
     Author     : Acer
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page  import="model.userDA"%>
-<%@ page  import="model.User"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page  import="da.userDA"%>
+<%@ page  import="javade.User"%>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -29,12 +28,14 @@
             <div id="signup_body_1">
                 <%
                     userDA userda = new userDA();
-                    User user = (User) session.getAttribute("user");
+                    User user = (User)session.getAttribute("user");
                     userda.signupUser(user);
+                    //kemek I added this so when the user kukubird yang, click back to the signup_confirmation page and confirm again,
+                    //give error so no duplication record
                     session.removeAttribute("user");
                 %>
                 <h1>signup completed </h1> <br/><br/><br/>
-                <form action="homepage.html">
+                    <form action="homepage.html">
                     <input id="signup_save_button" type="submit" value="to Petto!"/>
                 </form>
             </div>
@@ -47,3 +48,4 @@
 
 </html>
 
+--%>

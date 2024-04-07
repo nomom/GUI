@@ -15,6 +15,7 @@ div#signup_body_1 form > *{
     row-gap: 5px;
 }
 
+/**Servlet validation check**/
 div#signup_body_1 h2{
     color: red;
 }

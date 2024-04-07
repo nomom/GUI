@@ -5,8 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page  import="da.userDA"%>
-<%@ page  import="javade.User"%>
+<%@ page  import="model.userDA"%>
+<%@ page  import="model.User"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -16,8 +17,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Petto - Signup</title>
         <link rel="icon" type="image/x-icon" href="image/homepage/petto_logo.png">
-        <link rel="stylesheet" href="css/signup.css">
-        <link rel="stylesheet" href="css/default.css">
+        <link rel="stylesheet" href= "css/signup.css">
+        <link rel="stylesheet" href= "css/default.css">
     </head>
 
     <body>

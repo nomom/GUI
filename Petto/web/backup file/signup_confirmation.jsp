@@ -2,12 +2,11 @@
     Document   : signup
     Created on : Mar 31, 2024, 8:40:09 PM
     Author     : Acer
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page  import="model.userDA"%>
-<%@ page  import="model.User"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page  import="da.userDA"%>
+<%@ page  import="javade.User"%>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -27,15 +26,16 @@
         </div>
         <div id="signup_body_main">
             <div id="signup_body_1">
+                <h1>signup confirmation</h1>
                 <%
-                    userDA userda = new userDA();
                     User user = (User) session.getAttribute("user");
-                    userda.signupUser(user);
-                    session.removeAttribute("user");
+                    String name = user.getUserName();
+                    String password = user.getPswd();
                 %>
-                <h1>signup completed </h1> <br/><br/><br/>
-                <form action="homepage.html">
-                    <input id="signup_save_button" type="submit" value="to Petto!"/>
+                <form method="post" action="signup_save.jsp">
+                    <label>username: <%= name%></label><br/>
+                    <label>password: <%= password%></label><br/>
+                    <input type="submit" value="Confirm">
                 </form>
             </div>
         </div>
@@ -47,3 +47,4 @@
 
 </html>
 
+--%>

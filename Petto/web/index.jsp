@@ -5,8 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page  import="da.userDA"%>
-<%@ page  import="javade.User"%>
+<%@ page  import="model.userDA"%>
+<%@ page  import="model.User"%>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -42,7 +42,7 @@
                     <input name="password" type="text"><br/>
                     <input type="submit" value="Register">
                 </form>
-                <h3>login <a style="color: blue;" id="signup_hover" href="login.html">here</a></h2>
+                <h3>login <a style="color: blue;" id="signup_hover" href="login.jsp">here</a></h2>
             </div>
         </div>
         <div id="signup_pic">
