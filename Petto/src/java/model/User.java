@@ -19,10 +19,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
-/**
- *
- * @author goh
- */
+
 @Entity
 @Table(name = "USERS")
 @XmlRootElement
@@ -30,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
     @NamedQuery(name = "Users.findByUserId", query = "SELECT u FROM Users u WHERE u.userId = :userId"),
     @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username")})
-public class User {
+public class User implements Serializable {
     @Id
     @NotNull
     @Column(name = "USERNAME")
