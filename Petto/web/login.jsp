@@ -16,6 +16,25 @@
         <link rel="stylesheet" type="text/css" href="css/default.css">
     </head>
 
+        <!--Default Header -->
+    <header>
+        <div id="header_banner" >
+            <p id="header_banner_p" style="background-color: #D9D9D9; width: 100%;  height: 100%; text-align:center;">free shipping malaysia-wide for orders RM 150 above</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="homepage.html"><img style="width: 100px; height: 100px;"  src= "image/homepage/petto_logo.png" alt="Petto Logo"></a></li>
+                <li><a href="about.html">about us </a></li>
+                <li><a href="#">shop</a></li>
+                <li><a href="sizeguide.html">size guide</a></li>
+                <li><a href="TC.html">t&c</a></li>
+                <li><a href="shipping.html">shipping & returns</a></li>
+                <li><a href="login.jsp">login</a></li>
+                <li><a href="signup.jsp">sign up</a></li>
+                <li><a href="#"><img style="width: 20px; height: 20px;"  src= "image/homepage/shopping_cart.png" alt="Shopping Cart"></a></li>            </ul>   
+        </nav>
+    </header>
+        
     <body>
         <div id="login_header">
             <img style="width: 200px; height: 200px;"  src="image/homepage/petto_logo.png" alt="Petto Logo"></a>
@@ -48,11 +67,11 @@
                     <input name="password" type="text"><br/>
                     <input type="submit" value="Login">
                 </form>
-                <h3>register <a style="color: blue;" id="signup_hover" href="index.jsp" alt="Cute Cat">here</a></h2>
+                <h3>register <a style="color: blue;" id="signup_hover" href="signup.jsp" alt="Cute Cat">here</a></h2>
             </div>
         </div>
         <div id="login_pic">
-            <img style="width: 200px; height: 200px;"  src="image/homepage/cute_cat.png" alt="Cute Cat"></a>
+            <img style="width: 140px; height: 140px;"  src= "image/homepage/cute_cat.png" alt="Cute Cat"></a>
         </div>
         <img>
     </body>

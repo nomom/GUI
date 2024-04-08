@@ -48,7 +48,7 @@ public class validationSU extends HttpServlet {
             if (determination) {
                 validateExist++;
                 httpSession.setAttribute("validate", validateExist);
-                RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("/signup.jsp");
                 rd.forward(request, response);
             } else {
                 validateExist = 0;
