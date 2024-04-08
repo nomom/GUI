@@ -39,8 +39,11 @@ public class User {
     private String pswd;
     @Column(name = "ISADMIN")
     private boolean isAdmin;
-   
     
+    public User() {
+        
+    }
+
     public User(String userName,String pswd,boolean isAdmin){
         this.userName = userName;
         this.pswd = pswd;
