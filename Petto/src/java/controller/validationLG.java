@@ -54,7 +54,7 @@ public class validationLG extends HttpServlet {
                 // Validate the password
                 if (userda.validatePassword(user)) {
                     httpSession.setAttribute("userDetails", user);
-                    response.sendRedirect("homepage.html");
+                    response.sendRedirect("index.html");
                 } else {
                     request.setAttribute("passwordInvalid", true);
                     request.getRequestDispatcher("login.jsp").forward(request, response);

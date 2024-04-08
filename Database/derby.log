@@ -1,7 +1,7 @@
-Mon Apr 08 22:40:48 SGT 2024 : Apache Derby Network Server - 10.13.1.1 - (Unversioned directory) started and ready to accept connections on port 1527
+Mon Apr 08 22:50:48 SGT 2024 : Apache Derby Network Server - 10.13.1.1 - (Unversioned directory) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Mon Apr 08 22:41:32 SGT 2024:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (Unversioned directory): instance a816c00e-018e-be27-9137-ffffdf4236fb 
+Mon Apr 08 22:50:49 SGT 2024:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (Unversioned directory): instance a816c00e-018e-be30-b86f-ffffdf4236fb 
 on database directory C:\Users\BRANDON LIM\Desktop\GUI\Database\userdb with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
 Loaded from file:/C:/glassfish/javadb/lib/derby.jar
 java.vendor=Oracle Corporation
@@ -13,8 +13,8 @@ os.version=10.0
 derby.system.home=C:\Users\BRANDON LIM\Desktop\GUI\Database
 Database Class Loader started - derby.database.classpath=''
 ----------------------------------------------------------------
-Mon Apr 08 22:47:06 SGT 2024: Shutting down Derby engine
+Mon Apr 08 22:55:18 SGT 2024: Shutting down Derby engine
 ----------------------------------------------------------------
-Mon Apr 08 22:47:06 SGT 2024:
-Shutting down instance a816c00e-018e-be27-9137-ffffdf4236fb on database directory C:\Users\BRANDON LIM\Desktop\GUI\Database\userdb with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Mon Apr 08 22:55:18 SGT 2024:
+Shutting down instance a816c00e-018e-be30-b86f-ffffdf4236fb on database directory C:\Users\BRANDON LIM\Desktop\GUI\Database\userdb with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
 ----------------------------------------------------------------
