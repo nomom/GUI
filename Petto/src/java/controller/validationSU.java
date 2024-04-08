@@ -45,14 +45,8 @@ public class validationSU extends HttpServlet {
 
             //Validation to tukar to revert back or to confirmation page
             if (determination) {
-<<<<<<< HEAD
                 httpSession.setAttribute("validate", true);
                 RequestDispatcher rd = request.getRequestDispatcher("/signup.jsp");
-=======
-                validateExist++;
-                httpSession.setAttribute("validate", validateExist);
-                RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
->>>>>>> parent of 4fd4af7 (modify header and remove force authentication)
                 rd.forward(request, response);
             } else {
                 httpSession.setAttribute("validate", false);
