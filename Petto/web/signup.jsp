@@ -44,8 +44,8 @@
             <div id="signup_body_1">
                 <h1>signup</h1>
                 <%
-                    Integer validateExist = (Integer) session.getAttribute("validate");
-                    if (validateExist != null && validateExist > 0) {
+                    Boolean validateExist = (Boolean) session.getAttribute("validate");
+                    if (validateExist != null && validateExist) {
                 %>
                 <h2>Username already exists!</h2>
                 <%

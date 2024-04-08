@@ -15,7 +15,6 @@ public class validationSU extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        Integer validateExist = 0;
 
         String name = request.getParameter("username");
         String password = request.getParameter("password");
@@ -46,13 +45,11 @@ public class validationSU extends HttpServlet {
 
             //Validation to tukar to revert back or to confirmation page
             if (determination) {
-                validateExist++;
-                httpSession.setAttribute("validate", validateExist);
+                httpSession.setAttribute("validate", true);
                 RequestDispatcher rd = request.getRequestDispatcher("/signup.jsp");
                 rd.forward(request, response);
             } else {
-                validateExist = 0;
-                httpSession.setAttribute("validate", validateExist);
+                httpSession.setAttribute("validate", false);
                 RequestDispatcher rd = request.getRequestDispatcher("/signup_confirmation.jsp");
                 rd.forward(request, response);
             }
