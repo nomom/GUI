@@ -25,10 +25,12 @@ public class validationSU extends HttpServlet {
                     + "<br/><p style = \"text-align: center\"><a href = \"signup.jsp\" style = \"text-decoration: underline\">Go Back</a></p>");
         } else if (password.length() == 0) {
             out.print("<link rel=\"stylesheet\" href=\"css/default.css\">"
-                    + "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Password Needed!</h2>");
+                    + "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Password Needed!</h2>"
+                    + "<br/><p style = \"text-align: center\"><a href = \"signup.jsp\" style = \"text-decoration: underline\">Go Back</a></p>");
         } else if (name.length() == 0) {
             out.print("<link rel=\"stylesheet\" href=\"css/default.css\">"
-                    + "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Username Needed!</h2>");
+                    + "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Username Needed!</h2>"
+                    + "<br/><p style = \"text-align: center\"><a href = \"signup.jsp\" style = \"text-decoration: underline\">Go Back</a></p>");
         } else {
             //Create user objects
             User user = new User(name, password, false);
