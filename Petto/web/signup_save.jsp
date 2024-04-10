@@ -30,7 +30,7 @@
             <ul>
                 <li><a href="homepage.html"><img style="width: 100px; height: 100px;"  src= "image/homepage/petto_logo.png" alt="Petto Logo"></a></li>
                 <li><a href="about.html">about us </a></li>
-                <li><a href="#">shop</a></li>
+                <li><a href="shop.html">shop</a></li>
                 <li><a href="sizeguide.html">size guide</a></li>
                 <li><a href="TC.html">t&c</a></li>
                 <li><a href="shipping.html">shipping & returns</a></li>
