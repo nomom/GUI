@@ -32,10 +32,14 @@
         <div class="txthead" id="txthead">
             <h3 style="text-align: center;">shop</h3>
         </div>
+        
         <div class="item_container" id="txtbody">
             <div class="item_box">
                 <h4>Pedigree segs<h4>
-                <a href="dog_food.html"><img src="image/homepage/test_dog_food.png">
+                <img src="image/homepage/test_dog_food.png">
+                    <form method="post" action="validationSU">
+                        <input type="submit" value="View">
+                    </form>
                 <p>RM 200.00</p>
             </div>
         </div>
@@ -53,7 +57,7 @@
         <div class="footer_sections">
             <p>woof woof wooffff</p><br/>
             <a href="TC.html">t&c</a><br/><br/>
-            <a>Â© 2024, Petto</a>
+            <a>© 2024, Petto</a>
         </div>
         <div class="footer_sections">
             <p>social</p><br/>

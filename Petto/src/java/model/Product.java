@@ -14,6 +14,7 @@ public class Product {
     private String productName;
     private double productPrice;
     private int productQty;
+    private String productss;
     private int amountSold;
 
     public Product(String productID, String productName, double productPrice, int productQty, int amountSold) {
@@ -21,6 +22,7 @@ public class Product {
         this.productName = productName;
         this.productPrice = productPrice;
         this.productQty = productQty;
+        
         this.amountSold = amountSold;
     }
 
