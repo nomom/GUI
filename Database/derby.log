@@ -1,20 +1,4 @@
-Tue Apr 09 12:44:24 SGT 2024 : Apache Derby Network Server - 10.13.1.1 - (Unversioned directory) started and ready to accept connections on port 1527
+Wed Apr 10 20:09:16 SGT 2024 : Apache Derby Network Server - 10.13.1.1 - (Unversioned directory) started and ready to accept connections on port 1527
 ----------------------------------------------------------------
-Tue Apr 09 12:44:31 SGT 2024:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (Unversioned directory): instance a816c00e-018e-c12b-e801-00002aad6ed6 
-on database directory C:\Users\Acer\OneDrive\Desktop\GUIProject\GUI\Database\userdb with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
-Loaded from file:/C:/Users/Acer/OneDrive/Desktop/GlassFish/javadb/lib/derby.jar
-java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_202-b08
-user.dir=C:\Users\Acer\OneDrive\Desktop\GlassFish\javadb
-os.name=Windows 10
-os.arch=amd64
-os.version=10.0
-derby.system.home=C:\Users\Acer\OneDrive\Desktop\GUIProject\GUI\Database
-Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-Tue Apr 09 12:50:54 SGT 2024: Shutting down Derby engine
-----------------------------------------------------------------
-Tue Apr 09 12:50:54 SGT 2024:
-Shutting down instance a816c00e-018e-c12b-e801-00002aad6ed6 on database directory C:\Users\Acer\OneDrive\Desktop\GUIProject\GUI\Database\userdb with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Wed Apr 10 20:19:58 SGT 2024: Shutting down Derby engine
 ----------------------------------------------------------------

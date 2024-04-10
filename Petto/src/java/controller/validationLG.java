@@ -18,8 +18,7 @@ public class validationLG extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        Integer validateExistLG = 0;
-        Integer validatePasswordLG = 0;
+        HttpSession httpSession = request.getSession();
 
         String name = request.getParameter("username");
         String password = request.getParameter("password");
@@ -40,15 +39,13 @@ public class validationLG extends HttpServlet {
         } else {
             //Create user objects
             User user = new User(name, password, false);
+            // Store Programme object to the session
+            httpSession.setAttribute("user", user);
+
             userDA userda = new userDA();
 
             //Check whether the username is in the database or not.
             boolean determination = userda.getUserName(user);
-
-            HttpSession httpSession = request.getSession();
-
-            // Store Programme object to the session
-            httpSession.setAttribute("user", user);
 
             // To check whether the username exists
             if (determination) {
@@ -58,6 +55,7 @@ public class validationLG extends HttpServlet {
                     response.sendRedirect("index.html");
                 } else {
                     request.setAttribute("passwordInvalid", true);
+                    httpSession.setAttribute("isLogin", true);
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                 }
             } else {
