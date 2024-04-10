@@ -5,8 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page  import="model.userDA"%>
-<%@ page  import="model.User"%>
+<%@ page  import="model.Users"%>
+<%@ page  import="controller.AddUser"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
@@ -48,9 +48,12 @@
         <div id="signup_body_main">
             <div id="signup_body_1">
                 <%
-                    userDA userda = new userDA();
-                    User user = (User) session.getAttribute("user");
-                    userda.signupUser(user);
+                    AddUser test = new AddUser();
+                    Users user = (Users) session.getAttribute("user");
+                %>
+                <%= user.getUserName()%>
+                <%
+                    test.signupUser(user);
                     session.removeAttribute("user");
                 %>
                 <h1>signup completed </h1> <br/><br/><br/>

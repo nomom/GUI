@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page  import="model.userDA"%>
-<%@ page  import="model.User"%>
+<%@ page  import="model.Users"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 
@@ -48,7 +48,7 @@
             <div id="signup_body_1">
                 <h1>signup confirmation</h1>
                 <%
-                    User user = (User) session.getAttribute("user");
+                    Users user = (Users) session.getAttribute("user");
                     String name = user.getUserName();
                     String password = user.getPswd();
                 %>

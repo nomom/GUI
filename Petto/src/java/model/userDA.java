@@ -29,7 +29,7 @@ public class userDA {
     }
 
     //Get the username to check wheter it's valid or not.
-    public boolean getUserName(User user) {
+    public boolean getUserName(Users user) {
         String selectQuery = "SELECT * FROM " + tableName + " WHERE USERNAME = ?";
         try {
             PreparedStatement stmt = conn.prepareStatement(selectQuery);
@@ -47,7 +47,7 @@ public class userDA {
     }
 
     //Get the user password to check wheter it's valid or not.
-    public boolean validatePassword(User user) {
+    public boolean validatePassword(Users user) {
         String selectQuery = "SELECT * FROM " + tableName + " WHERE USERNAME = ?";
         try {
             PreparedStatement stmt = conn.prepareStatement(selectQuery);
@@ -69,7 +69,7 @@ public class userDA {
     }
     
     //Insert the user details to the database
-    public void signupUser(User user) {
+    public void signupUser(Users user) {
 
         try {
             String insertQuery = "INSERT INTO " + tableName + " VALUES (?, ?, ?)";

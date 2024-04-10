@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page  import="model.userDA"%>
-<%@ page  import="model.User"%>
+<%@ page  import="model.Users"%>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -51,7 +51,7 @@
                 <%
                     }
                 %>
-                <form method="post" action="validationSU">
+                <form method="post" action= "validationSU">
                     <label>username</label><br/>
                     <input name="username" type="text"><br/>
                     <label>password</label><br/>

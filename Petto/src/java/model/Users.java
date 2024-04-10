@@ -5,43 +5,49 @@
 package model;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
-
+/**
+ *
+ * @author BRANDON LIM
+ */
 @Entity
 @Table(name = "USERS")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
-    @NamedQuery(name = "Users.findByUserId", query = "SELECT u FROM Users u WHERE u.userId = :userId"),
-    @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username")})
-public class User implements Serializable {
+    @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.userName = :userName"),
+    @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.pswd = :pswd"),
+    @NamedQuery(name = "Users.findByIsadmin", query = "SELECT u FROM Users u WHERE u.isAdmin = :isAdmin")})
+public class Users implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     @Id
+    @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "USERNAME")
     private String userName;
+    @Size(max = 20)
     @Column(name = "PASSWORD")
     private String pswd;
     @Column(name = "ISADMIN")
-    private boolean isAdmin;
-    
-    public User() {
+    private Boolean isAdmin;
+
+    public Users() {
         
     }
 
-    public User(String userName,String pswd,boolean isAdmin){
+    public Users(String userName,String pswd,boolean isAdmin){
         this.userName = userName;
         this.pswd = pswd;
         this.isAdmin = isAdmin;
@@ -70,7 +76,30 @@ public class User implements Serializable {
     public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
-    
-    
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (userName != null ? userName.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Users)) {
+            return false;
+        }
+        Users other = (Users) object;
+        if ((this.userName == null && other.userName != null) || (this.userName != null && !this.userName.equals(other.userName))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "model.Users[ username=" + userName + " ]";
+    }
     
 }

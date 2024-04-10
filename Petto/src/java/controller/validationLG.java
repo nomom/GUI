@@ -1,9 +1,11 @@
 package controller;
 
-import model.User;
 import model.userDA;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,9 +13,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.transaction.UserTransaction;
+import model.Users;
 
 @WebServlet(name = "validationLG", urlPatterns = {"/validationLG"})
 public class validationLG extends HttpServlet {
+
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
@@ -38,7 +43,7 @@ public class validationLG extends HttpServlet {
                     + "<br/><p style = \"text-align: center\"><a href = \"login.jsp\" style = \"text-decoration: underline\">Go Back</a></p>");
         } else {
             //Create user objects
-            User user = new User(name, password, false);
+            Users user = new Users(name, password, false);
             // Store Programme object to the session
             httpSession.setAttribute("user", user);
 
