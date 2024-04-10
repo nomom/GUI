@@ -1,11 +1,12 @@
 package controller;
 
-import model.userDA;
+import model.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,16 +15,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
-import model.Users;
 
 @WebServlet(name = "validationLG", urlPatterns = {"/validationLG"})
 public class validationLG extends HttpServlet {
 
+    @PersistenceContext
+    EntityManager em;
+    @Resource
+    UserTransaction utx;
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        HttpSession httpSession = request.getSession();
 
         String name = request.getParameter("username");
         String password = request.getParameter("password");
@@ -42,20 +45,13 @@ public class validationLG extends HttpServlet {
                     + "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Username Needed!</h2>"
                     + "<br/><p style = \"text-align: center\"><a href = \"login.jsp\" style = \"text-decoration: underline\">Go Back</a></p>");
         } else {
-            //Create user objects
             Users user = new Users(name, password, false);
-            // Store Programme object to the session
-            httpSession.setAttribute("user", user);
-
-            userDA userda = new userDA();
-
-            //Check whether the username is in the database or not.
-            boolean determination = userda.getUserName(user);
-
-            // To check whether the username exists
+            UserService userService = new UserService(em);
+            boolean determination = userService.findUsername(user.getUserName());
+            HttpSession httpSession = request.getSession();
             if (determination) {
                 // Validate the password
-                if (userda.validatePassword(user)) {
+                if (userService.validatePassword(user)) {
                     httpSession.setAttribute("userDetails", user);
                     response.sendRedirect("index.html");
                 } else {

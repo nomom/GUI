@@ -10,8 +10,8 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.WebServlet;
 import javax.transaction.UserTransaction;
-import model.Users;
-import model.userDA;
+import model.*;
+import controller.*;
 
 @WebServlet(urlPatterns = {"/validationSU"})
 public class validationSU extends HttpServlet {
@@ -43,33 +43,19 @@ public class validationSU extends HttpServlet {
         } else {
             //Create user objects
             Users user = new Users(name, password, false);
-            userDA userda = new userDA();
-
-            //True or false here <3
-            boolean determination = userda.getUserName(user);
-
-            // Get a HttpSession or create one if it does not exist
+            UserService userService = new UserService(em, utx);
+            boolean determination = userService.findUsername(user.getUserName());
             HttpSession httpSession = request.getSession();
 
-            // Store Programme object to the session
-            httpSession.setAttribute("user", user);
-
-            //Validation to tukar to revert back or to confirmation page
             if (determination) {
                 httpSession.setAttribute("validate", true);
                 RequestDispatcher rd = request.getRequestDispatcher("/signup.jsp");
                 rd.forward(request, response);
             } else {
                 httpSession.setAttribute("validate", false);
-                try {
-                    utx.begin();
-                    em.persist(user);
-                    utx.commit();
-                } catch (Exception ex) {
-
-                }
-                RequestDispatcher rd = request.getRequestDispatcher("/index.html");
-                rd.forward(request, response);
+                userService.addUser(user);
+                httpSession.setAttribute("userDetails", user);
+                response.sendRedirect("index.html");
             }
 
             out.close();
