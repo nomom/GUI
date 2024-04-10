@@ -1,0 +1,40 @@
+div#txthead{
+    font-family: LeagueSpartanBold;
+}
+
+div#txtbody{
+    font-family: Inconsolata;
+}
+
+/*show how the boxes align*/
+.item_container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    margin: auto;
+}
+
+/*designing the boxes*/
+.item_box{
+    width: 300px;
+    height: 400px;
+    border: 1px transparent;
+    padding: 10px;
+    margin: 2%; 
+    text-align: center;
+
+/*image alignment*/
+}
+.item_box img{
+    margin-top: 20px;
+    width: 75%;
+}
+
+/*when hover*/
+.item_box:hover{
+    border: 3px solid yellow;
+}
+
+
