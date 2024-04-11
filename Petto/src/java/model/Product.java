@@ -3,19 +3,42 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
-
+import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
 /**
  *
  * @author Acer
  */
-public class Product {
 
+@Entity
+@Table(name = "PRODUCT")
+@XmlRootElement
+public class Product implements Serializable{
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "PRODUCTID")
     private String productID;
+    @Column(name="PRODUCTNAME")
     private String productName;
+    @Column(name="PRODUCTDESC")
     private String productDesc;
+    @Column(name="PRODUCTPRICE")
     private double productPrice;
+    @Column(name="PRODUCTQTY")
     private int productQty;
+    @Column(name="PRODUCTURL")
     private String productUrl;
+    @Column(name="AMOUNTSOLD")
     private int amountSold;
 
     public Product() {
