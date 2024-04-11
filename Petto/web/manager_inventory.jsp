@@ -49,20 +49,19 @@
         <div class="box">
             <p>Please enter the following</p>
             <form method="post" action="addProduct">
-                <label for="PID">Product ID : </label>
-                <input type="text" id="PID" name="PID"><br><br>
-                <label for="Pname">Product Name : </label>
-                <input type="text" name="Pname"><br><br>
-                <label for="Pdesc" id="Pdesc" name ="Pdesc">Product Description: </label>
-                <input type="text" id="Pdesc" name="Pdesc"><br><br>
-                <label for="Pprice" id="Pprice" name ="Pprice">Product price: </label>
-                <input type="text" id="Pprice" name="Pprice"><br><br>
-                <label for="Pqty" id="Pqty" name ="Pqty">Product quantity: </label>
-                <input type="text" id="Pqty" name="Pqty"><br><br>
-                <label for="Purl" id="Purl" name ="Purl">Product price: </label>
-                <input type="text" id="Purl" name="Purl"><br><br>
-                <label for="submit">if you wish to add the following :</label> 
-                <input type="submit" id="submit" name="submit" value="click here">
+                <label for="PID">Product ID:</label>
+            <input type="text" id="PID" name="PID"><br><br>
+            <label for="Pname">Product Name:</label>
+            <input type="text" id="Pname" name="Pname"><br><br>
+            <label for="Pdesc">Product Description:</label>
+            <input type="text" id="Pdesc" name="Pdesc"><br><br>
+            <label for="Pprice">Product Price:</label>
+            <input type="text" id="Pprice" name="Pprice"><br><br>
+            <label for="Pqty">Product Quantity:</label>
+            <input type="text" id="Pqty" name="Pqty"><br><br>
+            <label for="Purl">Product URL:</label>
+            <input type="text" id="Purl" name="Purl"><br><br>
+            <input type="submit" id="submit" name="submit" value="Add Product">
             </form>
         </div>
         <div class="head"><h1 style="text-align: center;">Delete Product</h1></div>
