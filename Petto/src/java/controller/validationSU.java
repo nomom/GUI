@@ -48,12 +48,14 @@ public class validationSU extends HttpServlet {
             HttpSession httpSession = request.getSession();
 
             if (determination) {
-                httpSession.setAttribute("validate", true);
+                httpSession.setAttribute("usernameInvalid", true);
+                httpSession.setAttribute("isLogin", false);
                 RequestDispatcher rd = request.getRequestDispatcher("/signup.jsp");
                 rd.forward(request, response);
             } else {
-                httpSession.setAttribute("validate", false);
                 userService.addUser(user);
+                httpSession.setAttribute("usernameInvalid", false);
+                httpSession.setAttribute("isLogin", true);
                 httpSession.setAttribute("userDetails", user);
                 response.sendRedirect("index.html");
             }

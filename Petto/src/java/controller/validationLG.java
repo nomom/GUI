@@ -53,14 +53,16 @@ public class validationLG extends HttpServlet {
                 // Validate the password
                 if (userService.validatePassword(user)) {
                     httpSession.setAttribute("userDetails", user);
+                    httpSession.setAttribute("isLogin", true);
                     response.sendRedirect("index.html");
                 } else {
                     request.setAttribute("passwordInvalid", true);
-                    httpSession.setAttribute("isLogin", true);
+                    httpSession.setAttribute("isLogin", false);
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                 }
             } else {
                 request.setAttribute("usernameInvalid", true);
+                httpSession.setAttribute("isLogin", false);
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             }
             out.close();
