@@ -23,7 +23,14 @@
 
     <%
         defaultPrompter dP = new defaultPrompter();
-        out.println(dP.headerReturn());
+        Users user = (Users) session.getAttribute("userDetails");
+        Boolean isLogin = (Boolean) session.getAttribute("isLogin");
+        if (isLogin != null && isLogin) {
+            out.println(dP.headerReturn(user));
+        } else {
+            out.println(dP.headerReturn());
+        }
+
     %>
 
     <body>
@@ -31,6 +38,18 @@
             <img style="width: 200px; height: 200px;"  src= "image/homepage/petto_logo.png" alt="Petto Logo"></a>
         </div>
         <div id="signup_body_main">
+            <% if (isLogin != null && isLogin) {%>
+            <div id="signup_body_1">
+                <h1 id="alrd_login">already sign up and log in.</h1>
+                <h3>your username: "<%= user.getUserName()%>"</h3>
+                <%if (user.getIsAdmin().equals("TRUE")) { %>
+                <h3 style="color: red;">you are an admin!</h3>
+                <%   }%>
+                <form id="alrd_login_form" action="validationLG" method="get">
+                    <input type="submit" value="logout">
+                </form>
+            </div>
+            <% } else { %>
             <div id="signup_body_1">
                 <h1>signup</h1>
                 <%
@@ -50,7 +69,9 @@
                 </form>
                 <h3>login <a style="color: blue;" id="signup_hover" href="login.jsp">here</a></h2>
             </div>
+            <% } %>
         </div>
+
         <div id="signup_pic">
             <img style="width: 150px; height: 150px;"  src= "image/homepage/cute_cat.png" alt="Cute Cat"></a>
         </div>

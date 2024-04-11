@@ -29,6 +29,7 @@ public class validationLG extends HttpServlet {
             throws ServletException, IOException {
         HttpSession httpSession = request.getSession();
         httpSession.removeAttribute("userDetails");
+        httpSession.removeAttribute("usernameInvalid");
         httpSession.setAttribute("isLogin", false);
         response.sendRedirect("index.jsp");
     }
@@ -51,22 +52,29 @@ public class validationLG extends HttpServlet {
         } else if (name.length() == 0) {
             out.println(dP.noUsername());
         } else {
-            Users user = new Users(name, password, false);
+            Users user = new Users(name, password);
             UserService userService = new UserService(em);
             boolean determination = userService.findUsername(user.getUserName());
+            Users userDetails = userService.findUser(user);
             HttpSession httpSession = request.getSession();
-            
+
             if (determination) {
-                // Validate the password
+                //Username and Password is True
                 if (userService.validatePassword(user)) {
-                    httpSession.setAttribute("userDetails", user);
+                    httpSession.setAttribute("userDetails", userDetails);
                     httpSession.setAttribute("isLogin", true);
+                    httpSession.removeAttribute("usernameInvalid");
+                    request.removeAttribute("passwordInvalid");
                     response.sendRedirect("index.jsp");
+                    //Username is True but Password False
                 } else {
                     request.setAttribute("passwordInvalid", true);
                     httpSession.setAttribute("isLogin", false);
+                    httpSession.removeAttribute("usernameInvalid");
+
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                 }
+                //Username is false
             } else {
                 request.setAttribute("usernameInvalid", true);
                 httpSession.setAttribute("isLogin", false);

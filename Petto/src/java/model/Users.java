@@ -41,16 +41,16 @@ public class Users implements Serializable {
     @Column(name = "PASSWORD")
     private String pswd;
     @Column(name = "ISADMIN")
-    private Boolean isAdmin;
+    private String isAdmin;
 
     public Users() {
         
     }
 
-    public Users(String userName,String pswd,boolean isAdmin){
+    public Users(String userName,String pswd){
         this.userName = userName;
         this.pswd = pswd;
-        this.isAdmin = isAdmin;
+        this.isAdmin = "FALSE";
     }
 
     public String getUserName() {
@@ -69,13 +69,10 @@ public class Users implements Serializable {
         this.pswd = pswd;
     }
 
-    public boolean getIsAdmin() {
+    public String getIsAdmin() {
         return isAdmin;
     }
 
-    public void setIsAdmin(boolean isAdmin) {
-        this.isAdmin = isAdmin;
-    }
 
     @Override
     public int hashCode() {

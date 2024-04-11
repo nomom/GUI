@@ -1,5 +1,5 @@
-
 <%@ page  import="controller.defaultPrompter" %>
+<%@ page import="model.Users" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,16 +13,26 @@
 
     <%
         defaultPrompter dP = new defaultPrompter();
-        out.println(dP.headerReturn());
+
+        Boolean isLogin = (Boolean) session.getAttribute("isLogin");
+        if (isLogin != null && isLogin) {
+            Users user = (Users) session.getAttribute("userDetails");
+            out.println(dP.headerReturn(user));
+        } else {
+            out.println(dP.headerReturn());
+        }
+
     %>
-    
+
+
+
     <body>
         <div id="homepage_1">
             <div>
                 <h1>Pampers, Play, <br/> Repeat: Where <br/> Tails and Happiness <br/> Meet!</h1>
                 <p>click shop, checkout, payment and have a nice Petto!</p>
             </div>
-            
+
             <div id="homepage_1_img">
                 <img style="width: 250px; height: 350px;"  src= "image/homepage/dog.png" alt="Dogs">
             </div>
@@ -51,8 +61,7 @@
         </div>
         <hr id="ending_hr">
     </body>
-    
-    <%
-        out.println(dP.footerReturn());
+
+    <%        out.println(dP.footerReturn());
     %>
 </html>

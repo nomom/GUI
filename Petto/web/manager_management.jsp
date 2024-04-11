@@ -1,4 +1,6 @@
 <%@ page  import="controller.defaultPrompter" %>
+<%@page import="model.Users" %>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -14,7 +16,15 @@
 
     <%
         defaultPrompter dP = new defaultPrompter();
-        out.println(dP.headerReturn());
+
+        Boolean isLogin = (Boolean) session.getAttribute("isLogin");
+        if (isLogin != null && isLogin) {
+            Users user = (Users) session.getAttribute("userDetails");
+            out.println(dP.headerReturn(user));
+        } else {
+            out.println(dP.headerReturn());
+        }
+
     %>
         
     <body>

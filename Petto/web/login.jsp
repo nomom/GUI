@@ -18,9 +18,14 @@
 
         <%
             defaultPrompter dP = new defaultPrompter();
-            out.println(dP.headerReturn());
-            Boolean isLogin = (Boolean) session.getAttribute("isLogin");
             Users user = (Users) session.getAttribute("userDetails");
+            Boolean isLogin = (Boolean) session.getAttribute("isLogin");
+            if (isLogin != null && isLogin) {
+                out.println(dP.headerReturn(user));
+            } else {
+                out.println(dP.headerReturn());
+            }
+
         %>
 
         <div id="login_header">
@@ -30,15 +35,18 @@
         <div id="login_body_main">
             <% if (isLogin != null && isLogin) {%>
             <div id="login_body_1">
-                <h1 id="alrd_login">Already Logged In.</h1>
-                <h3>Your username: "<%= user.getUserName()%>"</h3>
+                <h1 id="alrd_login">already log in.</h1>
+                <h3>your username: "<%= user.getUserName()%>"</h3>
+                <%if (user.getIsAdmin().equals("TRUE")) { %>
+                <h3 style="color: red;">you are an admin!</h3>
+                <%   }%>
                 <form id="alrd_login_form" action="validationLG" method="get">
-                    <input type="submit" value="Logout Here">
+                    <input type="submit" value="logout">
                 </form>
             </div>
             <% } else { %>
             <div id="login_body_1">
-                <h1>Login</h1>
+                <h1>login</h1>
                 <% Boolean passwordInvalid = (Boolean) request.getAttribute("passwordInvalid");
                     Boolean usernameInvalid = (Boolean) request.getAttribute("usernameInvalid");
                     if (passwordInvalid != null && passwordInvalid) { %>
@@ -49,13 +57,13 @@
                 <% } %>
 
                 <form method="post" action="validationLG">
-                    <label>Username</label><br>
+                    <label>username</label><br>
                     <input name="username" type="text"><br>
-                    <label>Password</label><br>
+                    <label>password</label><br>
                     <input name="password" type="password"><br>
                     <input type="submit" value="Login">
                 </form>
-                <h3>Register <a style="color: blue;" id="signup_hover" href="signup.jsp">here</a></h3>
+                <h3>register <a style="color: blue;" id="signup_hover" href="signup.jsp">here</a></h3>
             </div>
             <% } %>
         </div>

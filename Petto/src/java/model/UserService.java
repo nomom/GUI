@@ -36,6 +36,15 @@ public class UserService {
             return true;
         }
     }
+    
+        public Users findUser(Users user) {
+        Users users = em.find(Users.class, user.getUserName());
+        if (users != null) {
+            return users;
+        }
+        return user;
+    }
+
 
     public Boolean validatePassword(Users user) {
         Users users = em.find(Users.class, user.getUserName());

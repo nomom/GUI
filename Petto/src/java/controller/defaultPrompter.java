@@ -1,8 +1,20 @@
 package controller;
 
+import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.transaction.UserTransaction;
 import model.*;
 
 public class defaultPrompter {
+
+    @PersistenceContext
+    EntityManager em;
+    @Resource
+    Query query;
+    @Resource
+    UserTransaction utx;
 
     public defaultPrompter() {
 
@@ -27,6 +39,51 @@ public class defaultPrompter {
                 + "                <li><a href=\"#\"><img style=\"width: 20px; height: 20px;\"  src= \"image/homepage/shopping_cart.png\" alt=\"Shopping Cart\"></a></li>            </ul>   \n"
                 + "        </nav>\n"
                 + "    </header>";
+    }
+
+    public String headerReturn(Users user) {
+        
+        if (user.getIsAdmin().equals("TRUE")) {
+            return "    <!--Default Header -->\n"
+                    + "    <header>\n"
+                    + "        <div id=\"header_banner\" >\n"
+                    + "            <p id=\"header_banner_p\" style=\"background-color: #D9D9D9; width: 100%;  height: 100%; text-align:center;\">free shipping malaysia-wide for orders RM 150 above</p>\n"
+                    + "        </div>\n"
+                    + "        <nav>\n"
+                    + "            <ul>\n"
+                    + "                <li><a href=\"index.jsp\"><img style=\"width: 100px; height: 100px;\"  src= \"image/homepage/petto_logo.png\" alt=\"Petto Logo\"></a></li>\n"
+                    + "                <li><a href=\"about.jsp\">about us </a></li>\n"
+                    + "                <li><a href=\"shop.jsp\">shop</a></li>\n"
+                    + "                <li><a href=\"sizeguide.jsp\">size guide</a></li>\n"
+                    + "                <li><a href=\"TC.jsp\">t&c</a></li>\n"
+                    + "                <li><a href=\"shipping.jsp\">shipping & returns</a></li>\n"
+                    + "                <li><a href=\"login.jsp\">login</a></li>\n"
+                    + "                <li><a href=\"signup.jsp\">sign up</a></li>\n"
+                    + "                <li><a href=\"manager_management.jsp\">admin</a></li>\n"
+                    + "                <li><a href=\"#\"><img style=\"width: 20px; height: 20px;\"  src= \"image/homepage/shopping_cart.png\" alt=\"Shopping Cart\"></a></li>            </ul>   \n"
+                    + "        </nav>\n"
+                    + "    </header>";
+        } else {
+
+            return "    <!--Default Header -->\n"
+                    + "    <header>\n"
+                    + "        <div id=\"header_banner\" >\n"
+                    + "            <p id=\"header_banner_p\" style=\"background-color: #D9D9D9; width: 100%;  height: 100%; text-align:center;\">free shipping malaysia-wide for orders RM 150 above</p>\n"
+                    + "        </div>\n"
+                    + "        <nav>\n"
+                    + "            <ul>\n"
+                    + "                <li><a href=\"index.jsp\"><img style=\"width: 100px; height: 100px;\"  src= \"image/homepage/petto_logo.png\" alt=\"Petto Logo\"></a></li>\n"
+                    + "                <li><a href=\"about.jsp\">about us </a></li>\n"
+                    + "                <li><a href=\"shop.jsp\">shop</a></li>\n"
+                    + "                <li><a href=\"sizeguide.jsp\">size guide</a></li>\n"
+                    + "                <li><a href=\"TC.jsp\">t&c</a></li>\n"
+                    + "                <li><a href=\"shipping.jsp\">shipping & returns</a></li>\n"
+                    + "                <li><a href=\"login.jsp\">login</a></li>\n"
+                    + "                <li><a href=\"signup.jsp\">sign up</a></li>\n"
+                    + "                <li><a href=\"#\"><img style=\"width: 20px; height: 20px;\"  src= \"image/homepage/shopping_cart.png\" alt=\"Shopping Cart\"></a></li>            </ul>   \n"
+                    + "        </nav>\n"
+                    + "    </header>";
+        }
     }
 
     public String footerReturn() {

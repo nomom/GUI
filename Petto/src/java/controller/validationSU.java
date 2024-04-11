@@ -38,19 +38,22 @@ public class validationSU extends HttpServlet {
             out.println(dP.noUsername());
         } else {
             //Create user objects
-            Users user = new Users(name, password, false);
+            Users user = new Users(name, password);
             UserService userService = new UserService(em, utx);
             boolean determination = userService.findUsername(user.getUserName());
             HttpSession httpSession = request.getSession();
-
+            
+            
+            //Username found in the database
             if (determination) {
                 httpSession.setAttribute("usernameInvalid", true);
                 httpSession.setAttribute("isLogin", false);
                 RequestDispatcher rd = request.getRequestDispatcher("/signup.jsp");
                 rd.forward(request, response);
+                //User is not found in the database
             } else {
                 userService.addUser(user);
-                httpSession.setAttribute("usernameInvalid", false);
+                httpSession.removeAttribute("usernameInvalid");
                 httpSession.setAttribute("isLogin", true);
                 httpSession.setAttribute("userDetails", user);
                 response.sendRedirect("index.jsp");
