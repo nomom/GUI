@@ -14,15 +14,15 @@ public class Product {
     private String productName;
     private double productPrice;
     private int productQty;
-    private String productss;
+    private String productUrl;
     private int amountSold;
 
-    public Product(String productID, String productName, double productPrice, int productQty, int amountSold) {
+    public Product(String productID, String productName, double productPrice, int productQty,String productUrl, int amountSold) {
         this.productID = productID;
         this.productName = productName;
         this.productPrice = productPrice;
         this.productQty = productQty;
-        
+        this.productUrl = productUrl;
         this.amountSold = amountSold;
     }
 
