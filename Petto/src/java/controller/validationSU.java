@@ -27,19 +27,15 @@ public class validationSU extends HttpServlet {
 
         String name = request.getParameter("username");
         String password = request.getParameter("password");
+        defaultPrompter dP = new defaultPrompter();
 
+        //Check wheter there's empty input or not
         if (password.length() == 0 && name.length() == 0) {
-            out.print("<link rel=\"stylesheet\" href=\"css/default.css\">"
-                    + "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Username and Password Needed!</h2><br/>"
-                    + "<br/><p style = \"text-align: center\"><a href = \"signup.jsp\" style = \"text-decoration: underline\">Go Back</a></p>");
+            out.println(dP.noUandPs());
         } else if (password.length() == 0) {
-            out.print("<link rel=\"stylesheet\" href=\"css/default.css\">"
-                    + "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Password Needed!</h2>"
-                    + "<br/><p style = \"text-align: center\"><a href = \"signup.jsp\" style = \"text-decoration: underline\">Go Back</a></p>");
+            out.println(dP.noPassword());
         } else if (name.length() == 0) {
-            out.print("<link rel=\"stylesheet\" href=\"css/default.css\">"
-                    + "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Username Needed!</h2>"
-                    + "<br/><p style = \"text-align: center\"><a href = \"signup.jsp\" style = \"text-decoration: underline\">Go Back</a></p>");
+            out.println(dP.noUsername());
         } else {
             //Create user objects
             Users user = new Users(name, password, false);
@@ -57,7 +53,7 @@ public class validationSU extends HttpServlet {
                 httpSession.setAttribute("usernameInvalid", false);
                 httpSession.setAttribute("isLogin", true);
                 httpSession.setAttribute("userDetails", user);
-                response.sendRedirect("index.html");
+                response.sendRedirect("index.jsp");
             }
 
             out.close();

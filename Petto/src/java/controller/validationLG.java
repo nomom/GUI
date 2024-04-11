@@ -24,6 +24,16 @@ public class validationLG extends HttpServlet {
     @Resource
     UserTransaction utx;
 
+    //Log Out Here
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession httpSession = request.getSession();
+        httpSession.removeAttribute("userDetails");
+        httpSession.setAttribute("isLogin", false);
+        response.sendRedirect("index.jsp");
+    }
+
+    //Log In Here
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -31,30 +41,27 @@ public class validationLG extends HttpServlet {
         String name = request.getParameter("username");
         String password = request.getParameter("password");
 
+        defaultPrompter dP = new defaultPrompter();
+
         //Check wheter there's empty input or not
         if (password.length() == 0 && name.length() == 0) {
-            out.print("<link rel=\"stylesheet\" href=\"css/default.css\">"
-                    + "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Username and Password Needed!</h2><br/>"
-                    + "<br/><p style = \"text-align: center\"><a href = \"login.jsp\" style = \"text-decoration: underline\">Go Back</a></p>");
+            out.println(dP.noUandPs());
         } else if (password.length() == 0) {
-            out.print("<link rel=\"stylesheet\" href=\"css/default.css\">"
-                    + "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Password Needed!</h2>"
-                    + "<br/><p style = \"text-align: center\"><a href = \"login.jsp\" style = \"text-decoration: underline\">Go Back</a></p>");
+            out.println(dP.noPassword());
         } else if (name.length() == 0) {
-            out.print("<link rel=\"stylesheet\" href=\"css/default.css\">"
-                    + "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Username Needed!</h2>"
-                    + "<br/><p style = \"text-align: center\"><a href = \"login.jsp\" style = \"text-decoration: underline\">Go Back</a></p>");
+            out.println(dP.noUsername());
         } else {
             Users user = new Users(name, password, false);
             UserService userService = new UserService(em);
             boolean determination = userService.findUsername(user.getUserName());
             HttpSession httpSession = request.getSession();
+            
             if (determination) {
                 // Validate the password
                 if (userService.validatePassword(user)) {
                     httpSession.setAttribute("userDetails", user);
                     httpSession.setAttribute("isLogin", true);
-                    response.sendRedirect("index.html");
+                    response.sendRedirect("index.jsp");
                 } else {
                     request.setAttribute("passwordInvalid", true);
                     httpSession.setAttribute("isLogin", false);
@@ -71,24 +78,3 @@ public class validationLG extends HttpServlet {
     }
 
 }
-
-//if (determination) {
-//    // Reset validation indicators
-//    request.setAttribute("usernameInvalid", false);
-//    request.setAttribute("passwordInvalid", false);
-//
-//    // Validate the password
-//    if (userda.validatePassword(user)) {
-//        // Password is correct, set user details in session and redirect to homepage
-//        httpSession.setAttribute("userDetails", user);
-//        response.sendRedirect("homepage.html");
-//    } else {
-//        // Incorrect password, set passwordInvalid indicator
-//        request.setAttribute("passwordInvalid", true);
-//        response.sendRedirect("login/login.jsp");
-//    }
-//} else {
-//    // Invalid username, set usernameInvalid indicator
-//    request.setAttribute("usernameInvalid", true);
-//    response.sendRedirect("login/login.jsp");
-//}

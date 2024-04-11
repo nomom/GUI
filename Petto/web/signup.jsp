@@ -45,7 +45,7 @@
                     <label>username</label><br/>
                     <input name="username" type="text"><br/>
                     <label>password</label><br/>
-                    <input name="password" type="text"><br/>
+                    <input name="password" type="password"><br/>
                     <input type="submit" value="Register">
                 </form>
                 <h3>login <a style="color: blue;" id="signup_hover" href="login.jsp">here</a></h2>

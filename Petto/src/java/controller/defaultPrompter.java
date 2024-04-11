@@ -61,4 +61,22 @@ public class defaultPrompter {
                 + "    </address>";
     }
 
+    public String noUsername() {
+        return "<link rel=\"stylesheet\" href=\"css/default.css\">"
+                + "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Username Needed!</h2><br/>"
+                + "<br/><p style = \"text-align: center\"><a href = \"login.jsp\" style = \"text-decoration: underline\">Go Back</a></p>";
+    }
+
+    public String noPassword() {
+        return "<link rel=\"stylesheet\" href=\"css/default.css\">"
+                + "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Password Needed!</h2><br/>"
+                + "<br/><p style = \"text-align: center\"><a href = \"login.jsp\" style = \"text-decoration: underline\">Go Back</a></p>";
+    }
+
+    public String noUandPs() {
+        return "<link rel=\"stylesheet\" href=\"css/default.css\">"
+                + "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Username and Password Needed!</h2><br/>"
+                + "<br/><p style = \"text-align: center\"><a href = \"login.jsp\" style = \"text-decoration: underline\">Go Back</a></p>";
+    }
+
 }
