@@ -34,7 +34,7 @@
                 <p>1. View Customer Details</p>
                 <a href="manager_customer_details.html"><div class="underline" id="main">click here</div></a>
                 <p>2. Inventory</p>
-                <a href="manager_inventory.html"><div class="underline">click here</div></a>
+                <a href="manager_inventory.jsp"><div class="underline">click here</div></a>
                 <p>3. View Sales Record</p>
                 <a href="manager_sales_record.html"><div class="underline">click here</div></a>
             </div>
