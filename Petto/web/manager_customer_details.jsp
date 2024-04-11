@@ -1,5 +1,7 @@
 <%@ page  import="controller.defaultPrompter" %>
 <%@page import="model.Users" %>
+<%@page import="java.util.List"%>
+
 
 <!DOCTYPE html>
 
@@ -16,41 +18,52 @@
 
     <%
         defaultPrompter dP = new defaultPrompter();
-
+        Users user = (Users) session.getAttribute("userDetails");
         Boolean isLogin = (Boolean) session.getAttribute("isLogin");
         if (isLogin != null && isLogin) {
-            Users user = (Users) session.getAttribute("userDetails");
             out.println(dP.headerReturn(user));
         } else {
             out.println(dP.headerReturn());
         }
 
+        List<Users> userList = (List) session.getAttribute("userList");
     %>
-        
+
     <body>
         <div class="head"><h1>Customer Details</h1></div>
         <div class="table">
             <div class="content">
                 <table style="width: 100%;" >
                     <tr>
-                        <th>User ID</th>
                         <th>Username</th>
-                        <th>Email</th>
-                        <th>Time of Orders</th>
-                        <th>Accumalated Purchase (RM)</th>
+                        <th>Password</th>
+                        <th>Roles</th>
                     </tr>
+                    <%if (userList != null) {%>
+                    <%for (Users users : userList) {%>
                     <tr>
-                        <td>segs</td>
-                        <td>segssegssegssegssegssegssegssegssegssegs</td>
-                        <td>segs</td>
-                        <td>segs</td>
-                        <td>segs</td>
+                        <td><%=users.getUserName()%></td>
+                        <td><%=users.getPswd()%></td>
+                        <td><%=users.getUserType()%></td>
                     </tr>
+                    <%}%>
+                    <%}%>
                 </table>
             </div>
         </div>
-        <a href="manager_deleteID.html"><div class="underline">update</div></a>
+        <div class="underline">
+            <form method="post" action="ViewUser" >
+                <input type="submit" value="List Users">
+            </form>
+        </div>
+        <div class="underline">
+            <form method="get" action="ViewUser" >
+                <input type="submit" value="Manage User">
+            </form>
+        </div>
     </body>
 
 </html>
+
+
 

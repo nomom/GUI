@@ -43,7 +43,7 @@ public class defaultPrompter {
 
     public String headerReturn(Users user) {
         
-        if (user.getIsAdmin().equals("TRUE")) {
+        if (user.getUserType().equals("STAFF") || user.getUserType().equals("MANAGER")) {
             return "    <!--Default Header -->\n"
                     + "    <header>\n"
                     + "        <div id=\"header_banner\" >\n"

@@ -54,8 +54,10 @@ public class validationLG extends HttpServlet {
         } else {
             Users user = new Users(name, password);
             UserService userService = new UserService(em);
+            
             boolean determination = userService.findUsername(user.getUserName());
             Users userDetails = userService.findUser(user);
+            
             HttpSession httpSession = request.getSession();
 
             if (determination) {

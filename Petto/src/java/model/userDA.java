@@ -76,7 +76,7 @@ public class userDA {
             stmt = conn.prepareStatement(insertQuery);
             stmt.setString(1, user.getUserName());
             stmt.setString(2, user.getPswd());
-            stmt.setString(3, user.getIsAdmin());
+            stmt.setString(3, user.getUserType());
             stmt.executeUpdate();
 
         } catch (SQLException ex) {

@@ -37,8 +37,8 @@
             <div id="login_body_1">
                 <h1 id="alrd_login">already log in.</h1>
                 <h3>your username: "<%= user.getUserName()%>"</h3>
-                <%if (user.getIsAdmin().equals("TRUE")) { %>
-                <h3 style="color: red;">you are an admin!</h3>
+                <%if (user.getUserType().equals("STAFF") || user.getUserType().equals("MANAGER")) {%>
+                <h3 style="color: red;">you are <%= user.getUserType()%>!</h3>
                 <%   }%>
                 <form id="alrd_login_form" action="validationLG" method="get">
                     <input type="submit" value="logout">

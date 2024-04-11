@@ -36,15 +36,14 @@ public class UserService {
             return true;
         }
     }
-    
-        public Users findUser(Users user) {
+
+    public Users findUser(Users user) {
         Users users = em.find(Users.class, user.getUserName());
         if (users != null) {
             return users;
         }
-        return user;
+        return users;
     }
-
 
     public Boolean validatePassword(Users user) {
         Users users = em.find(Users.class, user.getUserName());
@@ -64,6 +63,11 @@ public class UserService {
         } catch (Exception ex) {
 
         }
+    }
+
+    public List<Users> findAll() {
+        List userList = em.createNamedQuery("Users.findAll").getResultList();
+        return userList;
     }
 
 }

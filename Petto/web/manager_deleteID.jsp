@@ -1,4 +1,6 @@
 <%@ page  import="controller.defaultPrompter" %>
+<%@page import="model.Users" %>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -14,7 +16,15 @@
 
     <%
         defaultPrompter dP = new defaultPrompter();
-        out.println(dP.headerReturn());
+        Users user = (Users) session.getAttribute("userDetails");
+        Boolean isLogin = (Boolean) session.getAttribute("isLogin");
+        if (isLogin != null && isLogin) {
+            out.println(dP.headerReturn(user));
+        } else {
+            out.println(dP.headerReturn());
+        }
+        
+        List<Users> userList = (List) session.getAttribute("userList");
     %>
         
     <body>
@@ -23,19 +33,19 @@
             <div class="content">
                 <table style="width: 100%;" >
                     <tr>
-                        <th>User ID</th>
                         <th>Username</th>
-                        <th>Email</th>
-                        <th>Time of Orders</th>
-                        <th>Accumalated Purchase (RM)</th>
+                        <th>Password</th>
+                        <th>Roles</th>
                     </tr>
+                    <%if (userList != null) {%>
+                    <%for (Users users : userList) {%>
                     <tr>
-                        <td>segs</td>
-                        <td>segssegssegssegssegssegssegssegssegssegs</td>
-                        <td>segs</td>
-                        <td>segs</td>
-                        <td>segs</td>
+                        <td><%=users.getUserName()%></td>
+                        <td><%=users.getPswd()%></td>
+                        <td><%=users.getUserType()%></td>
                     </tr>
+                    <%}%>
+                    <%}%>
                 </table>
             </div>
         </div>
