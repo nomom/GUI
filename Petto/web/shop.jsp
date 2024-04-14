@@ -3,8 +3,6 @@
 <%@ page  import="model.Product"%>
 <%@ page  import="controller.ViewInventory"%>
 <%@ page  import="model.ProductService"%>
-<%@ page  import="javax.persistence.EntityManager"%>
-<%@ page  import="javax.persistence.PersistenceContext"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +42,11 @@
                 <h4><%=product.getProductname()%></h4>
                 <img src="<%=product.getProducturl()%>"><img/>
                 <p>RM <%=product.getProductprice()%></p>
-                <form method="post" action="validationSU">
+                <form method="post" action="ViewIndividualProduct">
+                    <input type="hidden" value="<%=product.getProductname()%>" id="productname" name="productname">
+                    <input type="hidden" value="<%=product.getProducturl()%>" id="producturl" name="producturl">
+                    <input type="hidden" value="<%=product.getProductprice()%>" id="productprice" name="productprice">
+                    <input type="hidden" value="<%=product.getProductdesc()%>" id="productdesc" name="productdesc">
                     <input type="submit" value="View">
                 </form>
             </div>
