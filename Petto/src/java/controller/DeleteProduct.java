@@ -19,17 +19,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
-import model.Product;
-import model.ProductService;
-import model.UserService;
-import model.Users;
+import model.*;
 
 /**
  *
- * @author Acer
+ * @author MAMBA
  */
-@WebServlet(name = "addProduct", urlPatterns = {"/addProduct"})
-public class addProduct extends HttpServlet {
+@WebServlet(name = "DeleteProduct", urlPatterns = {"/DeleteProduct"})
+public class DeleteProduct extends HttpServlet {
 
     @PersistenceContext
     EntityManager em;
@@ -37,32 +34,28 @@ public class addProduct extends HttpServlet {
     UserTransaction utx;
 
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
-        ProductService uP = new ProductService(em, utx);
+        ProductService uP = new ProductService(em);
 
-        //Add product
-        String pID = request.getParameter("PID");
-        String pName = request.getParameter("Pname");
-        String pDesc = request.getParameter("Pdesc");
-        double pPrice = Double.parseDouble(request.getParameter("Pprice"));
-        int pQty = Integer.parseInt(request.getParameter("Pqty"));
-        String pURL = request.getParameter("Purl");
-        int amountSold = Integer.parseInt(request.getParameter("amountsold"));
-        Product product = new Product(pID, pName, pDesc, pPrice, pQty, pURL, amountSold);
-
-        //Add Product here
+        //Delete product here
+        String id = request.getParameter("PID");
         try {
-            if (uP.findpID(pID)) {
-                session.setAttribute("errorAddProduct", "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Product Existed!</h2><br/>");
-            } else {
-                uP.addProduct(product);
-                session.setAttribute("errorAddProduct", "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Done Add Product!</h2><br/>");
-            }
+            utx.begin();
+            uP.deleteProduct(id);
+            session.setAttribute("errorDeleteProduct", "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Done Deleted!</h2><br/>");
+            utx.commit();
         } catch (Exception ex) {
             Logger.getLogger(DeleteUser.class.getName()).log(Level.SEVERE, null, ex);
+            session.setAttribute("errorDeleteProduct", "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">There's an unexpected error!</h2><br/>");
         }
 
         //Refresh the users list
@@ -70,6 +63,7 @@ public class addProduct extends HttpServlet {
         session.setAttribute("productList", productList);
         response.sendRedirect("manager_inventory.jsp");
     }
+
 
     @Override
     public String getServletInfo() {

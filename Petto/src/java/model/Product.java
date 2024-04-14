@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
+
 import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -14,104 +15,145 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  *
- * @author Acer
+ * @author MAMBA
  */
-
 @Entity
 @Table(name = "PRODUCT")
 @XmlRootElement
-public class Product implements Serializable{
+@NamedQueries({
+    @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p"),
+    @NamedQuery(name = "Product.findByProductid", query = "SELECT p FROM Product p WHERE p.productid = :productid"),
+    @NamedQuery(name = "Product.findByProductname", query = "SELECT p FROM Product p WHERE p.productname = :productname"),
+    @NamedQuery(name = "Product.findByProductdesc", query = "SELECT p FROM Product p WHERE p.productdesc = :productdesc"),
+    @NamedQuery(name = "Product.findByProductprice", query = "SELECT p FROM Product p WHERE p.productprice = :productprice"),
+    @NamedQuery(name = "Product.findByProductqty", query = "SELECT p FROM Product p WHERE p.productqty = :productqty"),
+    @NamedQuery(name = "Product.findByProducturl", query = "SELECT p FROM Product p WHERE p.producturl = :producturl"),
+    @NamedQuery(name = "Product.findByAmountsold", query = "SELECT p FROM Product p WHERE p.amountsold = :amountsold")})
+public class Product implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
+    @Size(min = 1, max = 100)
     @Column(name = "PRODUCTID")
-    private String productID;
-    @Column(name="PRODUCTNAME")
-    private String productName;
-    @Column(name="PRODUCTDESC")
-    private String productDesc;
-    @Column(name="PRODUCTPRICE")
-    private double productPrice;
-    @Column(name="PRODUCTQTY")
-    private int productQty;
-    @Column(name="PRODUCTURL")
-    private String productUrl;
-    @Column(name="AMOUNTSOLD")
-    private int amountSold;
+    private String productid;
+    @Size(max = 100)
+    @Column(name = "PRODUCTNAME")
+    private String productname;
+    @Size(max = 500)
+    @Column(name = "PRODUCTDESC")
+    private String productdesc;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "PRODUCTPRICE")
+    private Double productprice;
+    @Column(name = "PRODUCTQTY")
+    private Integer productqty;
+    @Size(max = 200)
+    @Column(name = "PRODUCTURL")
+    private String producturl;
+    @Column(name = "AMOUNTSOLD")
+    private Integer amountsold;
 
     public Product() {
     }
 
-    public Product(String productID, String productName,String productDesc, double productPrice, int productQty,String productUrl, int amountSold) {
-        this.productID = productID;
-        this.productName = productName;
-        this.productDesc = productDesc;
-        this.productPrice = productPrice;
-        this.productQty = productQty;
-        this.productUrl = productUrl;
-        this.amountSold = amountSold;
+    public Product(String id, String name, String desc, double price, int qty, String url, int amountSold) {
+        this.productid = id;
+        this.productname = name;
+        this.productdesc = desc;
+        this.productprice = price;
+        this.productqty = qty;
+        this.producturl = url;
+        this.amountsold = amountSold;
     }
 
-    public String getProductID() {
-        return productID;
+    public Product(String productid) {
+        this.productid = productid;
     }
 
-    public void setProductID(String productID) {
-        this.productID = productID;
+    public String getProductid() {
+        return productid;
     }
 
-    public String getProductName() {
-        return productName;
+    public void setProductid(String productid) {
+        this.productid = productid;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public String getProductname() {
+        return productname;
     }
 
-    public double getProductPrice() {
-        return productPrice;
+    public void setProductname(String productname) {
+        this.productname = productname;
     }
 
-    public void setProductPrice(double productPrice) {
-        this.productPrice = productPrice;
+    public String getProductdesc() {
+        return productdesc;
     }
 
-    public int getProductQty() {
-        return productQty;
+    public void setProductdesc(String productdesc) {
+        this.productdesc = productdesc;
     }
 
-    public void setProductQty(int productQty) {
-        this.productQty = productQty;
+    public Double getProductprice() {
+        return productprice;
     }
 
-    public int getAmountSold() {
-        return amountSold;
+    public void setProductprice(Double productprice) {
+        this.productprice = productprice;
     }
 
-    public String getProductDesc() {
-        return productDesc;
+    public Integer getProductqty() {
+        return productqty;
     }
 
-    public void setProductDesc(String productDesc) {
-        this.productDesc = productDesc;
+    public void setProductqty(Integer productqty) {
+        this.productqty = productqty;
     }
 
-    public String getProductUrl() {
-        return productUrl;
+    public String getProducturl() {
+        return producturl;
     }
 
-    public void setProductUrl(String productUrl) {
-        this.productUrl = productUrl;
+    public void setProducturl(String producturl) {
+        this.producturl = producturl;
     }
 
-    public void setAmountSold(int amountSold) {
-        this.amountSold = amountSold;
+    public Integer getAmountsold() {
+        return amountsold;
     }
 
-    public double priceSold(int wantToBuy) {
-        double sex = wantToBuy * productPrice;
-        return sex;
+    public void setAmountsold(Integer amountsold) {
+        this.amountsold = amountsold;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (productid != null ? productid.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Product)) {
+            return false;
+        }
+        Product other = (Product) object;
+        if ((this.productid == null && other.productid != null) || (this.productid != null && !this.productid.equals(other.productid))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "model.Product[ productid=" + productid + " ]";
+    }
+
 }

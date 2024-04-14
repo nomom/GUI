@@ -56,13 +56,13 @@ public class validationLG extends HttpServlet {
             UserService userService = new UserService(em);
             
             boolean determination = userService.findUsername(user.getUserName());
-            Users userDetails = userService.findUser(user);
+            Users userDetails = userService.findUserWithName(user.getUserName());
             
             HttpSession httpSession = request.getSession();
 
             if (determination) {
                 //Username and Password is True
-                if (userService.validatePassword(user)) {
+                if (userService.validatePassword(user, userDetails)) {
                     httpSession.setAttribute("userDetails", userDetails);
                     httpSession.setAttribute("isLogin", true);
                     httpSession.removeAttribute("usernameInvalid");

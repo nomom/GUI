@@ -30,7 +30,7 @@ public class defaultPrompter {
                 + "            <ul>\n"
                 + "                <li><a href=\"index.jsp\"><img style=\"width: 100px; height: 100px;\"  src= \"image/homepage/petto_logo.png\" alt=\"Petto Logo\"></a></li>\n"
                 + "                <li><a href=\"about.jsp\">about us </a></li>\n"
-                + "                <li><a href=\"shop.jsp\">shop</a></li>\n"
+                + "                <li><form method=\"get\" action=\"ViewInventory\"><input type=\"submit\" value=\"shop\" style=\"border: none; background-color: white; color: black;\"></form></li>\n"
                 + "                <li><a href=\"sizeguide.jsp\">size guide</a></li>\n"
                 + "                <li><a href=\"TC.jsp\">t&c</a></li>\n"
                 + "                <li><a href=\"shipping.jsp\">shipping & returns</a></li>\n"
@@ -42,7 +42,7 @@ public class defaultPrompter {
     }
 
     public String headerReturn(Users user) {
-        
+
         if (user.getUserType().equals("STAFF") || user.getUserType().equals("MANAGER")) {
             return "    <!--Default Header -->\n"
                     + "    <header>\n"
@@ -53,7 +53,7 @@ public class defaultPrompter {
                     + "            <ul>\n"
                     + "                <li><a href=\"index.jsp\"><img style=\"width: 100px; height: 100px;\"  src= \"image/homepage/petto_logo.png\" alt=\"Petto Logo\"></a></li>\n"
                     + "                <li><a href=\"about.jsp\">about us </a></li>\n"
-                    + "                <li><a href=\"shop.jsp\">shop</a></li>\n"
+                    + "                <li><form method=\"get\" action=\"ViewInventory\"><input type=\"submit\" value=\"shop\" style=\"border: none; background-color: white; color: black;\"></form></li>\n"
                     + "                <li><a href=\"sizeguide.jsp\">size guide</a></li>\n"
                     + "                <li><a href=\"TC.jsp\">t&c</a></li>\n"
                     + "                <li><a href=\"shipping.jsp\">shipping & returns</a></li>\n"
@@ -74,7 +74,7 @@ public class defaultPrompter {
                     + "            <ul>\n"
                     + "                <li><a href=\"index.jsp\"><img style=\"width: 100px; height: 100px;\"  src= \"image/homepage/petto_logo.png\" alt=\"Petto Logo\"></a></li>\n"
                     + "                <li><a href=\"about.jsp\">about us </a></li>\n"
-                    + "                <li><a href=\"shop.jsp\">shop</a></li>\n"
+                    + "                <li><form method=\"get\" action=\"ViewInventory\"><input type=\"submit\" value=\"shop\" style=\"border: none; background-color: white; color: black;\"></form></li>\n"
                     + "                <li><a href=\"sizeguide.jsp\">size guide</a></li>\n"
                     + "                <li><a href=\"TC.jsp\">t&c</a></li>\n"
                     + "                <li><a href=\"shipping.jsp\">shipping & returns</a></li>\n"

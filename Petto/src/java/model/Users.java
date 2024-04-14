@@ -44,13 +44,19 @@ public class Users implements Serializable {
     private String userType;
 
     public Users() {
-        
+
     }
 
-    public Users(String userName,String pswd){
+    public Users(String userName, String pswd) {
         this.userName = userName;
         this.pswd = pswd;
         this.userType = "USER";
+    }
+
+    public Users(String userName, String pswd, String roles) {
+        this.userName = userName;
+        this.pswd = pswd;
+        this.userType = roles;
     }
 
     public String getUserName() {
@@ -72,7 +78,6 @@ public class Users implements Serializable {
     public String getUserType() {
         return userType;
     }
-
 
     @Override
     public int hashCode() {
@@ -98,5 +103,5 @@ public class Users implements Serializable {
     public String toString() {
         return "model.Users[ username=" + userName + " ]";
     }
-    
+
 }

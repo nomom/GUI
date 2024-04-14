@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import javax.persistence.*;
 import javax.transaction.UserTransaction;
 
-public class productService {
+public class ProductService {
 
     @PersistenceContext
     EntityManager em;
@@ -18,11 +18,11 @@ public class productService {
     @Resource
     UserTransaction utx;
 
-    public productService(EntityManager em) {
+    public ProductService(EntityManager em) {
         this.em = em;
     }
 
-    public productService(EntityManager em, UserTransaction utx) {
+    public ProductService(EntityManager em, UserTransaction utx) {
         this.em = em;
         this.utx = utx;
     }
@@ -36,20 +36,27 @@ public class productService {
             return true;
         }
     }
-    
-        public Product findpID(Product product) {
-        Product products = em.find(Product.class, product.getProductID());
-        if (products!= null) {
+
+    public Product findpID(Product product) {
+        Product products = em.find(Product.class, product.getProductid());
+        if (products != null) {
             return products;
         }
         return products;
     }
 
+    public Product findProductWithID(String id) {
+        Product products = em.find(Product.class, id);
+        if (products != null) {
+            return products;
+        }
+        return products;
+    }
 
     public Boolean validatePassword(Product product) {
-        Product products = em.find(Product.class, product.getProductName());
+        Product products = em.find(Product.class, product.getProductname());
 
-        if (products.getProductName().equals(product.getProductName())) {
+        if (products.getProductname().equals(product.getProductname())) {
             return true;
         } else {
             return false;
@@ -64,6 +71,20 @@ public class productService {
         } catch (Exception ex) {
 
         }
+    }
+
+    public void deleteProduct(String id) {
+        try {
+            Product product = findProductWithID(id);
+            em.remove(product);
+        } catch (Exception ex) {
+
+        }
+    }
+
+    public List<Product> findAll() {
+        List userList = em.createNamedQuery("Product.findAll").getResultList();
+        return userList;
     }
 
 }

@@ -19,17 +19,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.transaction.UserTransaction;
-import model.Product;
-import model.ProductService;
 import model.UserService;
 import model.Users;
 
 /**
  *
- * @author Acer
+ * @author MAMBA
  */
-@WebServlet(name = "addProduct", urlPatterns = {"/addProduct"})
-public class addProduct extends HttpServlet {
+@WebServlet(name = "AddUser", urlPatterns = {"/AddUser"})
+public class AddUser extends HttpServlet {
 
     @PersistenceContext
     EntityManager em;
@@ -37,40 +35,46 @@ public class addProduct extends HttpServlet {
     UserTransaction utx;
 
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
-        ProductService uP = new ProductService(em, utx);
+        UserService uS = new UserService(em, utx);
 
-        //Add product
-        String pID = request.getParameter("PID");
-        String pName = request.getParameter("Pname");
-        String pDesc = request.getParameter("Pdesc");
-        double pPrice = Double.parseDouble(request.getParameter("Pprice"));
-        int pQty = Integer.parseInt(request.getParameter("Pqty"));
-        String pURL = request.getParameter("Purl");
-        int amountSold = Integer.parseInt(request.getParameter("amountsold"));
-        Product product = new Product(pID, pName, pDesc, pPrice, pQty, pURL, amountSold);
+        //Declare user
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String roles = request.getParameter("roles");
+        Users user = new Users(username, password, roles);
 
-        //Add Product here
+        //Add User here
         try {
-            if (uP.findpID(pID)) {
-                session.setAttribute("errorAddProduct", "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Product Existed!</h2><br/>");
+            if (uS.findUsername(username)) {
+                session.setAttribute("errorAddUser", "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Username Existed!</h2><br/>");             
             } else {
-                uP.addProduct(product);
-                session.setAttribute("errorAddProduct", "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Done Add Product!</h2><br/>");
+                uS.addUser(user);
+                session.setAttribute("errorAddUser", "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Done Add User!</h2><br/>");   
             }
         } catch (Exception ex) {
             Logger.getLogger(DeleteUser.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         //Refresh the users list
-        List<Product> productList = uP.findAll();
-        session.setAttribute("productList", productList);
-        response.sendRedirect("manager_inventory.jsp");
+        List<Users> userList = uS.findAll();
+        session.setAttribute("userList", userList);
+        response.sendRedirect("manager_deleteID.jsp");
     }
 
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
     @Override
     public String getServletInfo() {
         return "Short description";

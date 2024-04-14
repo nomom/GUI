@@ -45,10 +45,18 @@ public class UserService {
         return users;
     }
 
-    public Boolean validatePassword(Users user) {
+    public Users findUserWithName(String username) {
+        Users users = em.find(Users.class, username);
+        if (users != null) {
+            return users;
+        }
+        return users;
+    }
+
+    public Boolean validatePassword(Users user, Users user2) {
         Users users = em.find(Users.class, user.getUserName());
 
-        if (users.getPswd().equals(user.getPswd())) {
+        if (users.getPswd().equals(user2.getPswd())) {
             return true;
         } else {
             return false;
@@ -62,6 +70,25 @@ public class UserService {
             utx.commit();
         } catch (Exception ex) {
 
+        }
+    }
+
+    public String deleteUser(String username, String adminRoles) {
+        try {
+            Users user = findUserWithName(username);
+            if (adminRoles.equals("STAFF") && user.getUserType().equals("MANAGER")) {
+                return "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Selected User is a Manager!</h2>";
+            } else if (adminRoles.equals("MANAGER") && user.getUserType().equals("MANAGER")) {
+                return "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Selected User is also a Manager!</h2>";
+            } else if (adminRoles.equals("STAFF") && user.getUserType().equals("STAFF")) {
+                return "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Selected User is also a STAFF!</h2>";
+            } else {
+                em.remove(user);
+                return "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Done Deleted!</h2><br/>";
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace(); // Log the exception for debugging
+            return "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">Error while deleting!</h2><br/>";
         }
     }
 

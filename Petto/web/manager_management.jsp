@@ -30,14 +30,23 @@
     <body>
         <div class="main">
             <h1>Admin Panel</h1>
-            <div class="text" id="text">                
-                <p>1. View Customer Details</p>
-                <a href="manager_customer_details.jsp"><div class="underline" id="main">click here</div></a>
-                <p>2. Inventory</p>
-                <a href="manager_inventory.jsp"><div class="underline">click here</div></a>
+            <div class="text" id="text">   
+                <!-- User Details -->
+                <form method="post" action="ViewUser">
+                    <p>1. View Customer Details</p>
+                    <input type="submit" value="View">
+                </form>
+                <!-- Inventory Details -->
+                <form method="post" action="ViewInventory">
+                    <p>2. Inventory</p>
+                    <input type="submit" value="View">
+                </form>
+                <!-- Sales Record -->
                 <%if (user.getUserType().equals("MANAGER")) {%>
-                <p>3. View Sales Record</p>
-                <a href="manager_sales_record.jsp"><div class="underline">click here</div></a>
+                <form>
+                    <p>3. View Sales Record</p>
+                    <a href="manager_sales_record.jsp"><div class="underline">click here</div></a>
+                </form>
                 <%}%>
             </div>
         </div>

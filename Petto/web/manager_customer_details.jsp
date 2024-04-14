@@ -52,12 +52,7 @@
             </div>
         </div>
         <div class="underline">
-            <form method="post" action="ViewUser" >
-                <input type="submit" value="List Users">
-            </form>
-        </div>
-        <div class="underline">
-            <form method="get" action="ViewUser" >
+            <form method="get" action="ViewUser">
                 <input type="submit" value="Manage User">
             </form>
         </div>

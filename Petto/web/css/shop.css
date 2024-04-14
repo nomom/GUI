@@ -29,7 +29,8 @@ div#txtbody{
 /*image alignment*/
 .item_box img{
     margin-top: 20px;
-    width: 75%;
+    max-width: 50%;
+    width: auto;
 }
 
 /*when hover*/

@@ -1,0 +1,67 @@
+div#contact_body_main {
+    display: flex;
+     flex-direction: column;
+    row-gap: 2px;
+    margin-left: 70px;
+}
+
+div#contact_body_main h1 {
+   margin-top: 35px;
+}
+
+
+
+div#contact_body_main form > *{
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+
+a#contact_hover:hover{
+    text-decoration: underline;
+}
+
+/*Form Style*/
+div#contact_body_main form input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    font-family: LeagueSpartan;
+}
+
+div#contact_body_main form input:hover {
+    border-color: #999;
+}
+
+div#contact_body_main form input:focus {
+    outline: none;
+    border-color: blue;
+}
+
+div#contact_body_main a {
+    color: blue;
+}
+
+div#contact_body_main a:hover {
+    text-decoration: underline;
+}
+
+
+div#contact_pic {
+    display: flex;
+    justify-content: right;
+}
+
+
+p#contact_body_2{
+   padding-top: 10px;
+   margin-left: 70px;
+   font-size: 20px;
+}
+
+p#contact_body_2 a{
+    color: blue; 
+     text-decoration: none; 
+}
+
