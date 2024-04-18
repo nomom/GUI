@@ -7,6 +7,7 @@
 <%@ page  import="controller.defaultPrompter" %>
 <%@ page  import="model.Users"%>
 <%@ page  import="model.Product"%>
+<%@page import="javax.servlet.http.HttpSession"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
