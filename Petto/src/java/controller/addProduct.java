@@ -37,6 +37,31 @@ public class addProduct extends HttpServlet {
     UserTransaction utx;
 
     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html");
+        HttpSession session = request.getSession();
+        ProductService uP = new ProductService(em, utx);
+
+        Product product = uP.findProductWithID(request.getParameter("PID"));
+
+        try {
+            utx.begin();
+            product.setProductqty(Integer.parseInt(request.getParameter("Pqty")));
+            em.merge(product);
+            utx.commit();
+            session.setAttribute("errorAddProduct", "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">product restock!</h2><br/>");
+        } catch (Exception ex) {
+            session.setAttribute("errorAddProduct", "<h2 style = \"text-align: center; color: red; font-family: LeagueSpartan;\">error!</h2><br/>");
+        }
+
+        //Refresh the users list
+        List<Product> productList = uP.findAll();
+        session.setAttribute("productList", productList);
+        response.sendRedirect("manager_inventory.jsp");
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html");

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : cart
-    Created on : Apr 14, 2024, 2:40:37 PM
+    Document   : checkout_info
+    Created on : Apr 11, 2024, 8:39:51 PM
     Author     : User
 --%>
 
@@ -18,48 +18,30 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Petto - Cart</title>
-        <link rel="icon" type="image/x-icon" href="image/homepage/petto_logo.png">
-        <link rel="stylesheet" href="css/carts.css">
+        <title>Petto - checkout</title>
+        <link rel="stylesheet" href="css/checkoutinfo.css">
         <link rel="stylesheet" href="css/default.css">
+        <link rel="icon" type="image/x-icon" href="image/homepage/petto_logo.png">
     </head>
 
     <%
         List<Cart> viewCartList = (List) session.getAttribute("viewCartList");
         List<Double> priceList = (List) session.getAttribute("priceList");
+        List<String> informationList = (List) session.getAttribute("informationList");
         Double totalPrice = (Double) session.getAttribute("totalPrice");
+
+        //error msg
         String errorInCart = (String) session.getAttribute("errorInCart");
         String deleteInCart = (String) session.getAttribute("deleteInCart");
         int index = 0;
     %>
 
     <header>
-        <form>
-            <input style="margin-left: 50px;" type="button" value="back" id="back-button">
+        <p>Information > <b>Shipping</b> > Payment > Review</p>
+        <form method="get" action="CheckOutShipping">
+            <input type="button" value="back" id="back-button">
         </form>
     </header>
-
-    <!-- Add Errors -->
-    <%
-        if (errorInCart != null) {
-    %>
-    <h1><%=errorInCart%></h1>
-    <%}%>
-    <%
-        session.setAttribute("errorInCart", null);
-    %>
-
-    <!-- Delete Errors -->
-    <%
-        if (deleteInCart != null) {
-    %>
-    <h1><%=deleteInCart%></h1>
-    <%}%>
-    <%
-        session.setAttribute("deleteInCart", null);
-    %>
-
-
 
     <body>
         <div id="cart_container">
@@ -73,16 +55,8 @@
                 <div class="push"></div>
                 <div id="rightest">   
                     <div id="button_div">
-                        <form method="get" action="AddCart">
-                            <input id="addButton" type="submit" value="+"/>
-                            <input type="hidden" value="<%=cart.getCartid()%>" id="cartid" name="cartid">
-                        </form>
-                        <p id="product_amount" ">x<%=cart.getProductquantity()%> (RM <%=priceList.get(index)%>)</p>
+                        <p id="product_amount" style="font-family: 'LeagueSpartanBold'">x<%=cart.getProductquantity()%> (RM <%=priceList.get(index)%>)</p>
                         <%index = index + 1;%>
-                        <form method="get" action="DeleteCart">
-                            <input id="removeButton" type="submit" value="-"/>
-                            <input type="hidden" value="<%=cart.getCartid()%>" id="cartid" name="cartid">
-                        </form>
                     </div>
                 </div>
             </div>
@@ -94,11 +68,21 @@
         </div>
 
         <div id="cart_submit">
+            <div>
+                <h2 style="text-align: center;"><%=informationList.get(3)%></h4>
+                    <h4 style="margin-left: 20px;"><%=informationList.get(5)%></h4>
+                    <form method="post" action="CheckOutPayment">
+                        <input type="submit" value="next" id="next-button">
+                    </form>
+            </div>
+            <div class="push"></div>
             <div id="subtotal">
+                <hr>
                 <p style="font-family: 'LeagueSpartanBold'">subtotal: RM <%=totalPrice%></p>
-                <form action="CheckOutInfo" method="post">
-                    <input type="submit" value="checkout" id="next-button">
-                </form>
+                <p style="font-family: 'LeagueSpartanBold'">shipping: RM <%=Double.parseDouble(informationList.get(4))%></p>
+                <hr>
+                <%totalPrice = totalPrice + Double.parseDouble(informationList.get(4));%>
+                <p style="font-family: 'LeagueSpartanBold'">total: RM <%=totalPrice%></p>
             </div>
         </div>
     </body>
@@ -111,9 +95,12 @@
         // Add a click event listener to the button
         backButton.addEventListener('click', function () {
             // Redirect to cart.jsp when the button is clicked
-            window.location.href = 'index.jsp';
+            window.location.href = 'checkout_info.jsp';
         });
     </script>
 
+
 </html>
+
+
 

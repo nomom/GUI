@@ -15,7 +15,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Petto - Contact Us</title>
+        <title>Petto - contact</title>
         <link rel="icon" type="image/x-icon" href="image/homepage/petto_logo.png">
         <link rel="stylesheet" href="css/contact.css">
         <link rel="stylesheet" href="css/default.css">

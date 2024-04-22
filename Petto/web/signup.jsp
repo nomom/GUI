@@ -15,7 +15,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Petto - Signup</title>
+        <title>Petto - signup</title>
         <link rel="icon" type="image/x-icon" href="image/homepage/petto_logo.png">
         <link rel="stylesheet" href="css/signup.css">
         <link rel="stylesheet" href="css/default.css">
@@ -42,9 +42,6 @@
             <div id="signup_body_1">
                 <h1 id="alrd_login">already sign up and log in.</h1>
                 <h3>your username: "<%= user.getUserName()%>"</h3>
-                <%if (user.getUserType().equals("STAFF") || user.getUserType().equals("MANAGER")) { %>
-                <h3 style="color: red;">you are an <%=user.getUserType()%>!</h3>
-                <%   }%>
                 <form id="alrd_login_form" action="validationLG" method="get">
                     <input type="submit" value="logout">
                 </form>

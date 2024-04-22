@@ -14,7 +14,7 @@
 }
 
 .mainimg img{
-    max-width: 80%;
+    max-width: 100%;
 }
 
 .product_details
@@ -62,38 +62,79 @@ div#txtbody{
     flex-direction: row;
     width: 100%;
     margin: auto;
-    margin-bottom: 50px;
-
 }
 
 /*designing the boxes*/
 .item_box{
-    width: 220px;
-    height: 320px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 400px;
     border: 1px transparent;
     padding: 10px;
-    margin: 4%;
+    margin: 2%;
     text-align: center;
 }
 
-.item_box h4{
-    font-size: 14px;
+.item_box div {
+    height: 20%;
 }
 
-.item_box p{
-    font-size: 14px;
+.product_details form {
+    display: flex;
+    gap: 50px;
+}
+
+#amount {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 2px solid;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
 }
 
 
-
-/*image alignment*/
-.item_box img{
-    margin-top: 20px;
-    width: 75%;
-}
 
 /*when hover*/
 .item_box:hover{
     border: 3px solid yellow;
 }
 
+#addbutton:hover {
+    background-color:lightgreen ;
+    color: black;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#removebutton:hover {
+    background-color: hsl(352, 100%, 60%);  
+    color: black;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/*image alignment*/
+#image-container {
+    width: 300px;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    background-position: center;
+}
+
+#image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    top: 0;
+    left: 0;
+}
+
+#image-container:hover {
+    overflow: visible;
+}

@@ -1,4 +1,19 @@
-.profile{
-    display: flex;  
+
+
+#informationdiv {
+    display: flex;
+    flex-direction: column;
 }
 
+#informationdiv h1 {
+    margin-left: 150px;
+}
+
+#informationdiv h2{
+    margin-left: 150px;
+}
+
+
+#informationdiv form{
+    margin-left: 150px;
+}

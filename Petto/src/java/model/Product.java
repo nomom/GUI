@@ -5,16 +5,20 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -34,6 +38,20 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Product.findByAmountsold", query = "SELECT p FROM Product p WHERE p.amountsold = :amountsold")})
 public class Product implements Serializable {
 
+    @Size(max = 100)
+    @Column(name = "PRODUCTNAME")
+    private String productname;
+    @Size(max = 500)
+    @Column(name = "PRODUCTDESC")
+    private String productdesc;
+    @Size(max = 200)
+    @Column(name = "PRODUCTURL")
+    private String producturl;
+    @OneToMany(mappedBy = "productid")
+    private List<Ordertable> ordertableList;
+    @OneToMany(mappedBy = "productid")
+    private Collection<Cart> cartCollection;
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -41,20 +59,11 @@ public class Product implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "PRODUCTID")
     private String productid;
-    @Size(max = 100)
-    @Column(name = "PRODUCTNAME")
-    private String productname;
-    @Size(max = 500)
-    @Column(name = "PRODUCTDESC")
-    private String productdesc;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "PRODUCTPRICE")
     private Double productprice;
     @Column(name = "PRODUCTQTY")
     private Integer productqty;
-    @Size(max = 200)
-    @Column(name = "PRODUCTURL")
-    private String producturl;
     @Column(name = "AMOUNTSOLD")
     private Integer amountsold;
 
@@ -83,22 +92,6 @@ public class Product implements Serializable {
         this.productid = productid;
     }
 
-    public String getProductname() {
-        return productname;
-    }
-
-    public void setProductname(String productname) {
-        this.productname = productname;
-    }
-
-    public String getProductdesc() {
-        return productdesc;
-    }
-
-    public void setProductdesc(String productdesc) {
-        this.productdesc = productdesc;
-    }
-
     public Double getProductprice() {
         return productprice;
     }
@@ -115,12 +108,12 @@ public class Product implements Serializable {
         this.productqty = productqty;
     }
 
-    public String getProducturl() {
-        return producturl;
+    public void removeProductQuantity(Integer amount) {
+        this.productqty = productqty - amount;
     }
 
-    public void setProducturl(String producturl) {
-        this.producturl = producturl;
+    public void addProductQuantity(Integer amount) {
+        this.productqty = productqty + amount;
     }
 
     public Integer getAmountsold() {
@@ -129,6 +122,10 @@ public class Product implements Serializable {
 
     public void setAmountsold(Integer amountsold) {
         this.amountsold = amountsold;
+    }
+
+    public void addTotalProduct(Integer amount) {
+        this.amountsold = amountsold + amount;
     }
 
     @Override
@@ -154,6 +151,48 @@ public class Product implements Serializable {
     @Override
     public String toString() {
         return "model.Product[ productid=" + productid + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Cart> getCartCollection() {
+        return cartCollection;
+    }
+
+    public void setCartCollection(Collection<Cart> cartCollection) {
+        this.cartCollection = cartCollection;
+    }
+
+    public String getProductname() {
+        return productname;
+    }
+
+    public void setProductname(String productname) {
+        this.productname = productname;
+    }
+
+    public String getProductdesc() {
+        return productdesc;
+    }
+
+    public void setProductdesc(String productdesc) {
+        this.productdesc = productdesc;
+    }
+
+    public String getProducturl() {
+        return producturl;
+    }
+
+    public void setProducturl(String producturl) {
+        this.producturl = producturl;
+    }
+
+    @XmlTransient
+    public List<Ordertable> getOrdertableList() {
+        return ordertableList;
+    }
+
+    public void setOrdertableList(List<Ordertable> ordertableList) {
+        this.ordertableList = ordertableList;
     }
 
 }

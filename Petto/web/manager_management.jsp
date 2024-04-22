@@ -43,9 +43,9 @@
                 </form>
                 <!-- Sales Record -->
                 <%if (user.getUserType().equals("MANAGER")) {%>
-                <form>
+                <form method="post" action="ViewSalesRecord">
                     <p>3. View Sales Record</p>
-                    <a href="manager_sales_record.jsp"><div class="underline">click here</div></a>
+                    <input type="submit" value="View">
                 </form>
                 <%}%>
             </div>

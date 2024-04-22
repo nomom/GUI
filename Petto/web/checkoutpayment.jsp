@@ -27,15 +27,18 @@
     <%
         List<Cart> viewCartList = (List) session.getAttribute("viewCartList");
         List<Double> priceList = (List) session.getAttribute("priceList");
+        List<String> informationList = (List) session.getAttribute("informationList");
         Double totalPrice = (Double) session.getAttribute("totalPrice");
+
+        //error msg
         String errorInCart = (String) session.getAttribute("errorInCart");
         String deleteInCart = (String) session.getAttribute("deleteInCart");
         int index = 0;
     %>
 
     <header>
-        <p><b>Information</b> > Shipping > Payment > Review</p>
-        <form>
+        <p>Information >Shipping >  <b>Payment</b> > Review</p>
+        <form method="get" action="CheckOutShipping">
             <input type="button" value="back" id="back-button">
         </form>
     </header>
@@ -66,21 +69,24 @@
 
         <div id="cart_submit">
             <div id="address_form">
-                <form method="post" action="CheckOutShipping">
-                    <h3>shipping information</h3>
+                <form method="get" action="CheckOutPayment">
+                    <h3>payment method</h3>
                     <hr>
-                    <h4 style="margin: 0px">address</h4>
-                    <input type="text" id="address" name="address" required>
-                    <h4 style="margin: 10px 0px 0px 0px">phone number</h4>
-                    <input type="text" id="phone" name="phone" required>
-                    <h4 style="margin: 10px 0px 0px 0px">billing nickname</h4>
-                    <input type="text" id="nickname" name="nickname" required>
-                    <br/>
-                    <label for="shipping"><h4 style="margin: 10px 0px 0px 0px">choose shipping value:</h4></label>
-                    <select name="shipping" id="shipping">
-                        <option value="J&T">J&T Express (RM 25)</option>
-                        <option value="GDEX">GD Express (RM 30)</option>
+                    <label for="payment"><h4 style="margin: 10px 0px 0px 0px">choose payment method:</h4></label>
+                    <select name="payment" id="payment">
+                        <option value="COD">COD</option>
+                        <option value="CC">Credit Card</option>
                     </select> </br>
+                    <div id="creditCard" style="display: none;">    
+                        <h4 style="margin: 10px 0px 0px 0px">Card Number</h4>
+                        <input type="text" id="cardnum" name="cardnum"  maxlength="16" pattern="[0-9]{16}">
+                        <h4 style="margin: 10px 0px 0px 0px">Month</h4>
+                        <input type="text" id="cardmonth" name="cardmonth">
+                        <h4 style="margin: 10px 0px 0px 0px">Year</h4>
+                        <input type="text" id="cardyear" name="cardyear">
+                        <h4 style="margin: 10px 0px 0px 0px">CCV (3 or 4 digits usually found on signature strip)</h4>
+                        <input type="text" id="ccv" name="ccv">
+                    </div>
                     <input type="submit" value="next" id="next-button">
                 </form>
             </div>
@@ -88,20 +94,34 @@
             <div id="subtotal">
                 <hr>
                 <p style="font-family: 'LeagueSpartanBold'">subtotal: RM <%=totalPrice%></p>
+                <p style="font-family: 'LeagueSpartanBold'">shipping: RM <%=Double.parseDouble(informationList.get(4))%></p>
                 <hr>
+                <%totalPrice = totalPrice + Double.parseDouble(informationList.get(4));%>
                 <p style="font-family: 'LeagueSpartanBold'">total: RM <%=totalPrice%></p>
             </div>
         </div>
     </body>
 
+
     <script>
         // Get a reference to the button element
         const backButton = document.getElementById('back-button');
 
-        // Add a click event listener to the button
         backButton.addEventListener('click', function () {
-            // Redirect to cart.jsp when the button is clicked
-            window.location.href = 'cart.jsp';
+            window.location.href = 'checkoutshipping.jsp';
+        });
+    </script>
+
+    <script>
+        const paymentSelect = document.getElementById('payment');
+        const creditCardInput = document.getElementById('creditCard');
+
+        paymentSelect.addEventListener('change', function () {
+            if (paymentSelect.value === 'CC') {
+                creditCardInput.style.display = 'block';
+            } else {
+                creditCardInput.style.display = 'none';
+            }
         });
     </script>
 

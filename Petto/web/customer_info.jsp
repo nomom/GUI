@@ -5,10 +5,14 @@
 --%>
 
 
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page  import="model.userDA"%>
-<%@ page  import="model.Users"%>
 <%@ page  import="controller.defaultPrompter" %>
+<%@ page import = "controller.addProduct"%>
+<%@page import="model.Users" %>
+<%@page import="model.Product" %>
+<%@page import="model.Ordertable" %>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -16,78 +20,63 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Petto - CustomerInformation</title>
+        <title>Petto - profile</title>
         <link rel="icon" type="image/x-icon" href="image/homepage/petto_logo.png">
-        <link rel="stylesheet" href="css/checkout3.css">
-      
+        <link rel="stylesheet" href="css/default.css">
+        <link rel="stylesheet" href="css/customer_info.css">
+        <link rel="stylesheet" href="css/carts.css">
+
     </head>
 
-    
+    <%
+        defaultPrompter dP = new defaultPrompter();
+
+        List<Ordertable> orderList = (List) session.getAttribute("orderList");
+        Users user = (Users) session.getAttribute("userDetails");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("E, dd MMM yyyy z");
+
+        Boolean isLogin = (Boolean) session.getAttribute("isLogin");
+        if (isLogin != null && isLogin) {
+            out.println(dP.headerReturn(user));
+        } else {
+            out.println(dP.headerReturn());
+        }
+
+    %>
 
 
     <body>
-        
-        <a href="index.jsp"><img style="width: 100px; height: 60px;margin-top:17px;float: right"  src= "image/homepage/petto_logo2.jpg" alt="Petto Logo"></a>
-        
-        <div class="profile">
-            
-              <img src="image/homepage/user_profile.png" style="width: 140px ;float: left;margin-left: 70px;margin-right: 100px"><img/>
-              <h1 id="user_name">Lim Bird Birdd</h1>
-              <h2 id="user_id">#UserID</h2>
-            
-            
+        <div id="informationdiv">
+            <h1>order history</h1>
+            <h2>your username: <%=user.getUserName()%></h2>
+            <h2>your roles: <%=user.getUserType()%></h2>
         </div>
-        
-        
-        <br><br>
-        
-        
-        <h3>Purchase history</h3>
+        <div id="informationdiv">
+            <h3 style=" margin-left: 150px; text-decoration: underline;">details below</h3>
+        </div>
         <hr>
-        <br><br>
-        
-        <div class="purchase_history">
-            
+        <%for (Ordertable order : orderList) {%>
+        <div style="margin-left: 150px;" id="cart_box">
+            <img src=<%=order.getProductid().getProducturl()%> />
             <div>
-              
-                <h3 id="address" style="text-align: center; font-weight:normal; font-size: 17px;margin-top: -10px">77, Lorong Lembah Permai Tiga, 11200 Tanjong Bugah</h3>
-                 <p id="order_id" style="text-align: left">#ORD001</p>
-                 <p id="date" style="text-align: right;margin-top: -28px;" >23 March 2024</p>
+                <p id="product_price" style="font-family: 'LeagueSpartanBold'"><%=dateFormat.format(order.getDatepurchase())%></p>
+                <h1 id="product_name" style="font-family: 'LeagueSpartanBold'"><%=order.getProductid().getProductname()%></h1>
+                <h5 id="product_name" style="font-family: 'LeagueSpartanBold'"><%=order.getPaymentmethod()%></h1>
             </div>
-            
-            
-            <div class="product_box" style=" margin-top: 50px;">
-                <img src="image/homepage/test_dog_food.png" style="width: 150px ;float: left;margin-left: 70px;margin-right: 100px"><img/>
-                <div class="product_details">
-
-                    <h1 id="product_name">Pedigree Weed</h1>
-                    <p id="product_price">RM200</p>
-                    <p id="qty">X 1</p>
-                </div>
-                <br>
+            <div class="push"></div>
+            <div id="rightest">   
+                <p id="product_price" style="font-family: 'LeagueSpartanBold'">bought: <%=order.getUnitsold()%></p>
+                <p id="product_price" style="font-family: 'LeagueSpartanBold'">unit price: RM<%=order.getProductid().getProductprice()%></p>
+                <p id="product_price" style="font-family: 'LeagueSpartanBold'">total: RM<%=order.getPrice()%></p>
             </div>
-            
-           <div class="product_box" style=" margin-top: 50px;">
-                <img src="image/homepage/test_dog_food.png" style="width: 150px ;float: left;margin-left: 70px;margin-right: 100px"><img/>
-                <div class="product_details">
-
-                    <h1 id="product_name">Pedigree Weed</h1>
-                    <p id="product_price">RM200</p>
-                    <p id="qty">X 1</p>
-                </div>
-                <br>
-            </div>
-            
-            
-            
-
-        
         </div>
-            
-        
-    
-       
-        
+        <p id="address" style="text-align:center;"><%=order.getShipping()%></p>
+        <hr>
+        <%}%>
+
+
+
+
     </body>
 
 

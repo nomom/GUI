@@ -67,7 +67,7 @@
         <%
             session.setAttribute("errorDeleteProduct", null);
         %>
-        
+
         <!<!-- Update Errors -->
         <%
             if (errorUpdateProduct != null) {
@@ -101,6 +101,20 @@
             </form>
         </div>
 
+        <!-- Restock Product -->
+        <div class="head"><h1 style="text-align: center;">Restock Product</h1></div>
+        <div class="box">
+            <p>Please enter the following</p>
+            <form method="get" action="addProduct">
+                <label for="PID">Product ID : </label>
+                <input type="text" id="PID" name="PID"><br><br>
+                <label for="Pqty">Product Quantity:</label>
+                <input type="text" id="Pqty" name="Pqty" ><br><br>
+                <input type="submit" id="submit" name="submit" value="click here">
+            </form>
+        </div>
+
+
         <!-- Delete Product -->
         <div class="head"><h1 style="text-align: center;">Delete Product</h1></div>
         <div class="box">
@@ -112,6 +126,8 @@
                 <input type="submit" id="submit" name="submit" value="click here">
             </form>
         </div>
+
+
 
         <!-- Update Product -->
         <div class="head"><h1 style="text-align: center;">Update Product</h1></div>

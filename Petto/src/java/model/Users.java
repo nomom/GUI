@@ -5,16 +5,22 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -27,8 +33,15 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
     @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.userName = :userName"),
     @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.pswd = :pswd"),
-    @NamedQuery(name = "Users.findByUserType", query = "SELECT u FROM Users u WHERE u.userType = :userType")})
+    @NamedQuery(name = "Users.findByUserType", query = "SELECT u FROM Users u WHERE u.userType = :userType")
+})
 public class Users implements Serializable {
+
+    @OneToMany(mappedBy = "username")
+    private List<Ordertable> ordertableList;
+
+    @OneToMany(mappedBy = "username")
+    private Collection<Cart> cartCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -102,6 +115,24 @@ public class Users implements Serializable {
     @Override
     public String toString() {
         return "model.Users[ username=" + userName + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Cart> getCartCollection() {
+        return cartCollection;
+    }
+
+    public void setCartCollection(Collection<Cart> cartCollection) {
+        this.cartCollection = cartCollection;
+    }
+
+    @XmlTransient
+    public List<Ordertable> getOrdertableList() {
+        return ordertableList;
+    }
+
+    public void setOrdertableList(List<Ordertable> ordertableList) {
+        this.ordertableList = ordertableList;
     }
 
 }

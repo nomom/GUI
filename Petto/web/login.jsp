@@ -9,7 +9,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Petto - Login</title>
+        <title>Petto - login</title>
         <link rel="icon" type="image/x-icon" href="image/homepage/petto_logo.png">
         <link rel="stylesheet" type="text/css" href="css/login.css">
         <link rel="stylesheet" type="text/css" href="css/default.css">
@@ -37,9 +37,6 @@
             <div id="login_body_1">
                 <h1 id="alrd_login">already log in.</h1>
                 <h3>your username: "<%= user.getUserName()%>"</h3>
-                <%if (user.getUserType().equals("STAFF") || user.getUserType().equals("MANAGER")) {%>
-                <h3 style="color: red;">you are <%= user.getUserType()%>!</h3>
-                <%   }%>
                 <form id="alrd_login_form" action="validationLG" method="get">
                     <input type="submit" value="logout">
                 </form>

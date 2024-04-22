@@ -27,15 +27,19 @@
     <%
         List<Cart> viewCartList = (List) session.getAttribute("viewCartList");
         List<Double> priceList = (List) session.getAttribute("priceList");
+        List<String> informationList = (List) session.getAttribute("informationList");
+        List<String> paymentList = (List) session.getAttribute("paymentList");
         Double totalPrice = (Double) session.getAttribute("totalPrice");
+
+        //error msg
         String errorInCart = (String) session.getAttribute("errorInCart");
         String deleteInCart = (String) session.getAttribute("deleteInCart");
         int index = 0;
     %>
 
     <header>
-        <p><b>Information</b> > Shipping > Payment > Review</p>
-        <form>
+        <p>Information >Shipping > Payment > <b>Review</b></p>
+        <form method="get" action="CheckOutShipping">
             <input type="button" value="back" id="back-button">
         </form>
     </header>
@@ -52,7 +56,7 @@
                 <div class="push"></div>
                 <div id="rightest">   
                     <div id="button_div">
-                        <p id="product_amount" style="font-family: 'LeagueSpartanBold'">x<%=cart.getProductquantity()%> (RM <%=priceList.get(index)%>)</p>
+                        <p id="product_amount" style="font-family: 'LeagueSpartanBold';">x<%=cart.getProductquantity()%> (RM <%=priceList.get(index)%>)</p>
                         <%index = index + 1;%>
                     </div>
                 </div>
@@ -66,42 +70,51 @@
 
         <div id="cart_submit">
             <div id="address_form">
-                <form method="post" action="CheckOutShipping">
-                    <h3>shipping information</h3>
-                    <hr>
-                    <h4 style="margin: 0px">address</h4>
-                    <input type="text" id="address" name="address" required>
-                    <h4 style="margin: 10px 0px 0px 0px">phone number</h4>
-                    <input type="text" id="phone" name="phone" required>
-                    <h4 style="margin: 10px 0px 0px 0px">billing nickname</h4>
-                    <input type="text" id="nickname" name="nickname" required>
-                    <br/>
-                    <label for="shipping"><h4 style="margin: 10px 0px 0px 0px">choose shipping value:</h4></label>
-                    <select name="shipping" id="shipping">
-                        <option value="J&T">J&T Express (RM 25)</option>
-                        <option value="GDEX">GD Express (RM 30)</option>
-                    </select> </br>
-                    <input type="submit" value="next" id="next-button">
+                <form method="post" action="GenerateOrderID">
+                    <div>
+                        <h3>information review</h3>
+                        <hr>
+                        <h4 style="margin: 20px 0px 0px 0px; font-family: 'LeagueSpartanBold';">Address</h4>
+                        <p><%=informationList.get(0)%></p>
+                        <h4 style="margin: 20px 0px 0px 0px; font-family: 'LeagueSpartanBold';">Phone Number</h4>
+                        <p><%=informationList.get(1)%></p>
+                        <h4 style="margin: 20px 0px 0px 0px; font-family: 'LeagueSpartanBold';">Billing Name</h4>
+                        <p><%=informationList.get(2)%></p>
+                        <h4 style="margin: 20px 0px 0px 0px; font-family: 'LeagueSpartanBold';">Payment Method</h4>
+                        <%if (paymentList.get(0).equals("Cash On Delivery")) {%>
+                        <p><%=paymentList.get(0)%></p>
+                        <%} else {%>
+                        <p><%=paymentList.get(0)%></p>
+                        <h4 style="margin: 20px 0px 0px 0px; font-family: 'LeagueSpartanBold';">Card Number</h4>
+                        <p><%=paymentList.get(1)%></p>
+                        <%}%>
+
+
+
+                    </div>
+
+                    <input type="submit" value="Confirm" id="next-button">
                 </form>
             </div>
             <div class="push"></div>
             <div id="subtotal">
                 <hr>
                 <p style="font-family: 'LeagueSpartanBold'">subtotal: RM <%=totalPrice%></p>
+                <p style="font-family: 'LeagueSpartanBold'">shipping: RM <%=Double.parseDouble(informationList.get(4))%></p>
                 <hr>
+                <%totalPrice = totalPrice + Double.parseDouble(informationList.get(4));%>
                 <p style="font-family: 'LeagueSpartanBold'">total: RM <%=totalPrice%></p>
             </div>
         </div>
     </body>
 
+
     <script>
         // Get a reference to the button element
         const backButton = document.getElementById('back-button');
 
-        // Add a click event listener to the button
         backButton.addEventListener('click', function () {
-            // Redirect to cart.jsp when the button is clicked
-            window.location.href = 'cart.jsp';
+            window.location.href = 'checkoutpayment.jsp';
         });
     </script>
 

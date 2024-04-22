@@ -18,6 +18,8 @@ div#txtbody{
 
 /*designing the boxes*/
 .item_box{
+    display: flex;
+    flex-direction: column;
     width: 300px;
     height: 400px;
     border: 1px transparent;
@@ -26,12 +28,32 @@ div#txtbody{
     text-align: center;
 }
 
-/*image alignment*/
-.item_box img{
-    margin-top: 20px;
-    max-width: 50%;
-    width: auto;
+.item_box div {
+    height: 20%;
 }
+
+/*image alignment*/
+#image-container {
+    width: 300px;
+    height: 200px;
+    overflow: hidden; 
+    position: relative; 
+    background-position: center; 
+}
+
+#image-container img {
+    width: 100%; 
+    height: auto;
+    display: block;
+    top: 0; 
+    left: 0;
+}
+
+#image-container:hover {
+    overflow: visible; 
+}
+
+
 
 /*when hover*/
 .item_box:hover{
@@ -53,5 +75,4 @@ form input:focus {
     outline: none;
     border-color: blue;
 }
-
 

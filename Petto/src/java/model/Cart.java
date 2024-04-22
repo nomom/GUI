@@ -8,18 +8,19 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Acer
+ * @author MAMBA
  */
 @Entity
 @Table(name = "CART")
@@ -27,50 +28,60 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Cart.findAll", query = "SELECT c FROM Cart c"),
     @NamedQuery(name = "Cart.findByCartid", query = "SELECT c FROM Cart c WHERE c.cartid = :cartid"),
-    @NamedQuery(name = "Cart.findByUsername", query = "SELECT c FROM Cart c WHERE c.username = :username"),
-    @NamedQuery(name = "Cart.findByProductid", query = "SELECT c FROM Cart c WHERE c.productid = :productid"),
-    @NamedQuery(name = "Cart.findByQuantity", query = "SELECT c FROM Cart c WHERE c.quantity = :quantity")})
+    @NamedQuery(name = "Cart.findByUser", query = "SELECT c FROM Cart c WHERE c.username = :username"),
+    @NamedQuery(name = "Cart.findByProductquantity", query = "SELECT c FROM Cart c WHERE c.productquantity = :productquantity")})
 public class Cart implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
     @Column(name = "CARTID")
-    private String cartid;
-    @Size(max = 100)
-    @ManyToOne
-    @JoinColumn(name = "USERNAME", referencedColumnName = "USERNAME")
-    private Users username;
-    @Size(max = 100)
-    @ManyToOne
+    private Integer cartid;
+    @Column(name = "PRODUCTQUANTITY")
+    private Integer productquantity;
     @JoinColumn(name = "PRODUCTID", referencedColumnName = "PRODUCTID")
+    @ManyToOne
     private Product productid;
-    @Column(name = "QUANTITY")
-    private Integer quantity;
+    @JoinColumn(name = "USERNAME", referencedColumnName = "USERNAME")
+    @ManyToOne
+    private Users username;
 
     public Cart() {
     }
 
-    public Cart(String cartid) {
-        this.cartid = cartid;
+    public Cart(Integer productquantity, Product productid, Users username) {
+        this.productquantity = productquantity;
+        this.productid = productid;
+        this.username = username;
     }
 
-    public String getCartid() {
+    public Cart(Integer productquantity) {
+        this.productquantity = productquantity;
+    }
+
+    public Integer getCartid() {
         return cartid;
     }
 
-    public void setCartid(String cartid) {
+    public void setCartid(Integer cartid) {
         this.cartid = cartid;
     }
 
-    public Users getUsername() {
-        return username;
+    public Integer getProductquantity() {
+        return productquantity;
     }
 
-    public void setUsername(Users username) {
-        this.username = username;
+    public void setProductquantity(Integer productquantity) {
+        this.productquantity = productquantity;
+    }
+
+    public void addProductquantity() {
+        this.productquantity = ++this.productquantity;
+    }
+
+    public void removeProductquantity() {
+        this.productquantity = --this.productquantity;
     }
 
     public Product getProductid() {
@@ -81,12 +92,12 @@ public class Cart implements Serializable {
         this.productid = productid;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public Users getUsername() {
+        return username;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setUsername(Users username) {
+        this.username = username;
     }
 
     @Override
@@ -113,5 +124,5 @@ public class Cart implements Serializable {
     public String toString() {
         return "model.Cart[ cartid=" + cartid + " ]";
     }
-    
+
 }
